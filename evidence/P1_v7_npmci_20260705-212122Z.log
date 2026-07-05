@@ -1,0 +1,33 @@
+# P1.4 V7 cvin-v7 npm ci cache-warm + offline replay (ignore-scripts)
+utc: 20260705-212122Z
+cwd: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-II-ERC1056/CVIN-Implementation-1056Testbed-V7/cvin-v7
+node: v18.20.4  npm: 10.7.0
+git HEAD: 6245e93d2fa607b07f14b8a9660a90081e4a9be6
+lockfile sha256 (before): 20b97616efbb23f616f5a6834a4e41bfe05877fc52f2e08035c975068cdbd725
+=== PASS 1: npm ci --ignore-scripts (ONLINE) ===
+npm warn deprecated testrpc@0.0.1: testrpc has been renamed to ganache-cli, please use this package from now on.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated @ensdomains/ens@0.4.5: Please use @ensdomains/ens-contracts
+npm warn deprecated @ensdomains/resolver@0.2.4: Please use @ensdomains/ens-contracts
+
+added 576 packages in 2m
+npm notice
+npm notice New major version of npm available! 10.7.0 -> 11.18.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.18.0
+npm notice To update run: npm install -g npm@11.18.0
+npm notice
+pass1 exit: 0
+=== PASS 2: npm ci --offline --ignore-scripts (OFFLINE REPLAY) ===
+npm warn deprecated testrpc@0.0.1: testrpc has been renamed to ganache-cli, please use this package from now on.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated @ensdomains/ens@0.4.5: Please use @ensdomains/ens-contracts
+npm warn deprecated @ensdomains/resolver@0.2.4: Please use @ensdomains/ens-contracts
+
+added 576 packages in 1m
+pass2 exit: 0
+lockfile sha256 (after): 20b97616efbb23f616f5a6834a4e41bfe05877fc52f2e08035c975068cdbd725
+LOCKFILE UNCHANGED

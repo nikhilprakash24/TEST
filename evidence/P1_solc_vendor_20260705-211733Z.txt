@@ -1,0 +1,14 @@
+# P1.1 solc vendoring evidence
+utc: 20260705-211733Z
+host lists: binaries.soliditylang.org windows-amd64 + bin(wasm)
+0.8.17 windows file=solc-windows-amd64-v0.8.17+commit.8df45f5f.exe listSha=7615e019666f29c7e77b20f9c506dda839a875fbc9baf3322d21348c88c05c69 localSha=7615e019666f29c7e77b20f9c506dda839a875fbc9baf3322d21348c88c05c69 MATCH longVersion=0.8.17+commit.8df45f5f
+0.8.17 wasm file=soljson-v0.8.17-nightly.2022.8.8+commit.6a42da8d.js listSha=0c26c71c7decf0236049844660c9562a1d52b765d8ad82e39be6da4399787e0d localSha=0c26c71c7decf0236049844660c9562a1d52b765d8ad82e39be6da4399787e0d MATCH longVersion=0.8.17-nightly.2022.8.8+commit.6a42da8d
+0.8.19 windows file=solc-windows-amd64-v0.8.19+commit.7dd6d404.exe listSha=00d3b5ca64b097964ed6d70d9805a63fdd27113b07c1b2559dbfdd579f994508 localSha=00d3b5ca64b097964ed6d70d9805a63fdd27113b07c1b2559dbfdd579f994508 MATCH longVersion=0.8.19+commit.7dd6d404
+0.8.19 wasm file=soljson-v0.8.19-nightly.2023.2.1+commit.ddbef8f6.js listSha=1cb914b2db68469d184e6b47f712fb505e88decda72aa9071d75a1300604fa97 localSha=1cb914b2db68469d184e6b47f712fb505e88decda72aa9071d75a1300604fa97 MATCH longVersion=0.8.19-nightly.2023.2.1+commit.ddbef8f6
+0.8.24 windows file=solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe listSha=580ee56b61bbcaad953117e1e4a0874d90e6af5cb4ce4359571d7da25f6620e9 localSha=580ee56b61bbcaad953117e1e4a0874d90e6af5cb4ce4359571d7da25f6620e9 MATCH longVersion=0.8.24+commit.e11b9ed9
+0.8.24 wasm file=soljson-v0.8.24-nightly.2023.11.8+commit.90b046aa.js listSha=cc8f5ad0f1c65a7377ac8fd29bde5fce90854deb2ac5678edc73f87f9d332e23 localSha=cc8f5ad0f1c65a7377ac8fd29bde5fce90854deb2ac5678edc73f87f9d332e23 MATCH longVersion=0.8.24-nightly.2023.11.8+commit.90b046aa
+
+# correction: wasm rows above hit NIGHTLY builds (script defect: first-version match); release wasm re-vendored below via releases[] map
+0.8.17 wasm-RELEASE file=soljson-v0.8.17+commit.8df45f5f.js listSha=617828e63be485c7cc2dbcbdd5a22b582b40fafaa41016ad595637b83c90656c localSha=617828e63be485c7cc2dbcbdd5a22b582b40fafaa41016ad595637b83c90656c MATCH longVersion=0.8.17+commit.8df45f5f
+0.8.19 wasm-RELEASE file=soljson-v0.8.19+commit.7dd6d404.js listSha=e0b74e0a16e783a35169f74d1a615ecb48d07c30f97346b83cd587949268681e localSha=e0b74e0a16e783a35169f74d1a615ecb48d07c30f97346b83cd587949268681e MATCH longVersion=0.8.19+commit.7dd6d404
+0.8.24 wasm-RELEASE file=soljson-v0.8.24+commit.e11b9ed9.js listSha=11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1 localSha=11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1 MATCH longVersion=0.8.24+commit.e11b9ed9

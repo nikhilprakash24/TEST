@@ -17,6 +17,8 @@
 | H6 | **Plugin/version mismatch** — V7 config + tests require `@nomicfoundation/hardhat-toolbox` (absent from `package.json`); `deploy.js` uses ethers v6 syntax while ethers is pinned v5 | `…/cvin-v7/hardhat.config.js`, `…/test/Lock.js`, `…/scripts/deploy.js`, `…/package.json` | Med (blocks `hardhat` cmds as-is) | CLI agent (WO-S1) | — |
 | H7 | **Non-functional dApp** — `react-dapp` imports a nonexistent `Greeter` artifact, `ethers` not declared, CRA `index.js` entrypoint overwritten | `…/cvin-v7/react-dapp/src/index.js`, `index_template_base.js`, `package.json` | Low (out of scope this pass) | Park | — |
 | H8 | **Unbuilt branch** — LSP0 track has no build system; `LSP0ERC725Account/` empty; `LSP2Utils.sol` imports uninstalled `@erc725/smart-contracts` | `CVIN-Implementation-III-LSP0/` | Info | Park | [TS-7] |
+| H9 | **git+ssh transitive dep** — Build-III lockfile resolves `ethereumjs-abi` via `git+ssh://git@github.com/…` → `npm ci` hard-fails without GitHub SSH auth; git deps carry no npm integrity hash | `…/ERC725-develop/implementations/package-lock.json` | High (blocked install) | **Defused** via git `insteadOf` rewrite (P1.3, logged deviation); resolution proven by pass-1 exit 0 + offline replay | — |
+| H10 | **Dead protocol dep** — Build-II lockfile pins `websocket` to a personal fork over `git://` (protocol retired by GitHub 2022) → native install unrecoverable as-pinned | `…/erc725-master/package-lock.json` | Med | Build-II downgraded to **source-only triage** in WO-S2 (D6) | — |
 
 > H1 — **Operator only** acts on the key (rotate/remove + move to untracked `.env`). The CLI agent does not echo, commit, or transact with it.
 
@@ -36,7 +38,7 @@
 
 | Token | Class | Question | Authority | Status |
 |---|---|---|---|---|
-| [TS-1] | Empirical | Build-III ERC725 passes X/Y suite at Node 16.19.0? | CLI agent (WO-S1) + operator | **Open** — blocked by H3 until missing sources restored |
+| [TS-1] | Empirical | Build-III ERC725 passes X/Y suite at Node 16.19.0? | CLI agent (WO-S1) + operator | **Open** — restore source now **pinned**: upstream `ERC725Alliance/ERC725` commit `3b1b4935db8c8576647bd064bf9c9c2f8724721e` byte-matches all 13/13 checked-in contracts AND contains the missing `custom/`/`interfaces/`/`helpers/` dirs (evidence `P1_upstream_diff_*`); awaiting **D2** ratification, then WO-S1 runs |
 | [TS-2] | Empirical | ERC-725 X/Y compiles at 0.8.24 offline unmodified or only after mechanical port? | CLI agent (WO-S2) | **Open** |
 | [TS-3] | Empirical | `CVIN_ERC725.sol` (0.4.24) ports cleanly to 0.8.24; what changes? | CLI agent (WO-S2) | **Open** |
 | [TS-4] | Documentary→action | Is in-repo Infura key live? (Rotate regardless.) | **Operator** | **Open** — H1 |
@@ -65,5 +67,16 @@
 - `evidence/WO-S0_filetree_<ts>.txt` — full file tree (excl. `.git`).
 - `evidence/WO-S0_pragmas_<ts>.txt` — every `pragma solidity` with path:line.
 - `evidence/WO-S0_network_secrets_<ts>.txt` — RPC/network references in source (`.js`/`.ts`), **secret values redacted**.
+- `evidence/P1_solc_vendor_<ts>.txt` — solc 0.8.17/0.8.19/0.8.24 vendoring, exe+wasm **release** builds, all checksums MATCH vs `binaries.soliditylang.org` list.json (includes a documented correction: first wasm pass mis-grabbed nightlies).
+- `evidence/P1_upstream_diff_<ts>.txt` — Build-III provenance: upstream commit `3b1b493…` = 13/13 byte-match + missing dirs present.
+- `evidence/P1_git_insteadof_<ts>.txt` — environment deviation: `ssh://`→`https://`, `git://`→`https://` rewrites (H9/H10), reversible via `--unset-all`.
+- `evidence/P1_buildIII_npmci_<ts>.log` / `evidence/P1_v7_npmci_<ts>.log` — `npm ci --ignore-scripts` online pass + **offline replay** both exit 0; lockfile SHA-256 unchanged (before=after recorded in-log).
+- `evidence/EVIDENCE_MANIFEST.txt` — append-only SHA-256 manifest of every evidence file.
 
-*Append-only. A new run is a new file (Standing Rule 6).*
+*Append-only. A new run is a new file (Standing Rule 6). Log convention: header block (UTC, command, cwd, node/npm versions, git HEAD), exit-code lines, native output captured via shell redirection.*
+
+---
+
+## F. P1 provisioning record (2026-07-05, online window)
+
+Executed per `docs/NEXT_STEPS_PLAN_v1.0.md` P1; scope = the 2-of-5 install set (Build-III, V7). **Deviations, all logged and reversible:** (1) global git `insteadOf` rewrites (H9/H10); (2) `--ignore-scripts` posture on all installs (zero lifecycle scripts executed); (3) npm cache relocated to `toolchain\npm-cache` (sandbox-local). **Provisioned:** 6 checksum-verified solc release binaries; upstream ERC725 clone with the restore commit pinned by byte-diff; warm npm caches proven by offline replay; `node_modules` left in place for WO-S1 (gitignored). **Not done (gated):** Build-III source restore (awaits **D2**); V7 `hardhat-toolbox` addition (awaits **D4**); any compile/test (WO-S1/P3). Key rotation **[TS-4]/D1 remains open — operator action**.
