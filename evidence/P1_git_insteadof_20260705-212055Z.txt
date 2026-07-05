@@ -1,0 +1,4 @@
+# P1.3 git URL rewrites (environment deviation - defuses H9/H10 for installs; reversible via --unset-all)
+utc: 20260705-212055Z
+ssh://git@github.com/
+git://github.com/

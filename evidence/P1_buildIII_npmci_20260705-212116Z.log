@@ -1,0 +1,43 @@
+# P1.4 Build-III npm ci cache-warm + offline replay (ignore-scripts)
+utc: 20260705-212116Z
+cwd: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations
+node: v16.19.0  npm: 8.19.3
+git HEAD: 6245e93d2fa607b07f14b8a9660a90081e4a9be6
+lockfile sha256 (before): 22e229525ff4fa006b89c4c4a4ff595baeb07f1b217b139440e47da58b446951
+=== PASS 1: npm ci --ignore-scripts (ONLINE) ===
+npm WARN deprecated safe-event-emitter@1.0.1: Renamed to @metamask/safe-event-emitter
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated eth-sig-util@1.4.2: Deprecated in favor of '@metamask/eth-sig-util'
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated ethereumjs-block@2.2.2: New package name format for new versions: @ethereumjs/block. Please update.
+npm WARN deprecated ethereumjs-tx@1.3.7: New package name format for new versions: @ethereumjs/tx. Please update.
+npm WARN deprecated ethereumjs-tx@2.1.2: New package name format for new versions: @ethereumjs/tx. Please update.
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated ethereumjs-block@1.7.1: New package name format for new versions: @ethereumjs/block. Please update.
+npm WARN deprecated ethereumjs-vm@2.6.0: New package name format for new versions: @ethereumjs/vm. Please update.
+npm WARN deprecated ethereumjs-common@1.5.2: New package name format for new versions: @ethereumjs/common. Please update.
+
+added 1109 packages in 2m
+npm notice 
+npm notice New major version of npm available! 8.19.3 -> 11.18.0
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v11.18.0>
+npm notice Run `npm install -g npm@11.18.0` to update!
+npm notice 
+pass1 exit: 0
+=== PASS 2: npm ci --offline --ignore-scripts (OFFLINE REPLAY) ===
+npm WARN deprecated safe-event-emitter@1.0.1: Renamed to @metamask/safe-event-emitter
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated eth-sig-util@1.4.2: Deprecated in favor of '@metamask/eth-sig-util'
+npm WARN deprecated ethereumjs-block@2.2.2: New package name format for new versions: @ethereumjs/block. Please update.
+npm WARN deprecated ethereumjs-tx@2.1.2: New package name format for new versions: @ethereumjs/tx. Please update.
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated ethereumjs-tx@1.3.7: New package name format for new versions: @ethereumjs/tx. Please update.
+npm WARN deprecated ethereumjs-block@1.7.1: New package name format for new versions: @ethereumjs/block. Please update.
+npm WARN deprecated ethereumjs-vm@2.6.0: New package name format for new versions: @ethereumjs/vm. Please update.
+npm WARN deprecated ethereumjs-common@1.5.2: New package name format for new versions: @ethereumjs/common. Please update.
+
+added 1109 packages in 60s
+pass2 exit: 0
+lockfile sha256 (after): 22e229525ff4fa006b89c4c4a4ff595baeb07f1b217b139440e47da58b446951
+LOCKFILE UNCHANGED

@@ -1,0 +1,24 @@
+# P1.2 Build-III upstream provenance byte-diff
+utc: 20260705-211743Z
+upstream: https://github.com/ERC725Alliance/ERC725.git
+local set: 13 .sol files in .../ERC725-develop/implementations/contracts
+ALL-MATCH commit=3b1b4935db8c8576647bd064bf9c9c2f8724721e (13/13 files byte-identical)
+best commit: 3b1b4935db8c8576647bd064bf9c9c2f8724721e (13/13) describe=v3.2.0-112-g3b1b493
+--- per-file status at best commit ---
+match  ERC725.sol
+match  ERC725Init.sol
+match  ERC725InitAbstract.sol
+match  ERC725X.sol
+match  ERC725XCore.sol
+match  ERC725XInit.sol
+match  ERC725XInitAbstract.sol
+match  ERC725Y.sol
+match  ERC725YCore.sol
+match  ERC725YInit.sol
+match  ERC725YInitAbstract.sol
+match  constants.sol
+match  errors.sol
+--- missing dirs present at best commit? ---
+present: custom
+present: interfaces
+present: helpers
