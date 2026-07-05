@@ -2,3 +2,9 @@
 /node_modules
 /CVIN-Implementation-II-ERC1056/CVIN-Implementation-1056Testbed-V6/cvin-v6/node_modules
 CVIN-Implementation-II-ERC1056/CVIN-Implementation-1056Testbed-V7/cvin-v7/node_modules
+# Sandbox-onboarding: keep derived build state out of the as-found tree
+artifacts/
+cache/
+typechain-types/
+types/
+.env
