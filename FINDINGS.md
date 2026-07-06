@@ -80,3 +80,30 @@
 ## F. P1 provisioning record (2026-07-05, online window)
 
 Executed per `docs/NEXT_STEPS_PLAN_v1.0.md` P1; scope = the 2-of-5 install set (Build-III, V7). **Deviations, all logged and reversible:** (1) global git `insteadOf` rewrites (H9/H10); (2) `--ignore-scripts` posture on all installs (zero lifecycle scripts executed); (3) npm cache relocated to `toolchain\npm-cache` (sandbox-local). **Provisioned:** 6 checksum-verified solc release binaries; upstream ERC725 clone with the restore commit pinned by byte-diff; warm npm caches proven by offline replay; `node_modules` left in place for WO-S1 (gitignored). **Not done (gated):** Build-III source restore (awaits **D2**); V7 `hardhat-toolbox` addition (awaits **D4**); any compile/test (WO-S1/P3). Key rotation **[TS-4]/D1 remains open — operator action**.
+
+---
+
+## G. Parallel-work integration record (2026-07-05, exploration pass)
+
+**Located & read (read-only, staged at `toolchain\parallel-work\`):** `cvin-sandbox-v1.3` (canonical sandbox, 2026-06-05, from Downloads zip), `METHODOLOGY.md` (byte-identical twin of the sandbox copy), plus programme docs (thesis registries v11.3, Building Paths Unified v4.0, Native Sandbox Methodology v1.0). The directions referenced *v1.1*; **v1.3 is the operative canon.**
+
+**Canonical state (from BUILD_LOG/traces/BUILD_PLAN):** one architect-pass baseline only — O1_ERC1056 12/12 compliant, single S1 trace `i2i_O1_ERC1056_1780620182135.jsonl` (2026-06-05, real gas: createDID 178935, issueCredential 130163, createPresentation 62441…). **No operator-executed gate on record; G1–G6 not run; WO-0 (source-doc ingest) is BLOCKING and open; canonical WO-0..9 + WO-1a/1b/WO-R all open.** Gates are **G0–G6** (seven; G6 = architect evidence-merge/graduation).
+
+**[D5 RESOLVED — architect inputs recovered from canon]:**
+- *Solidity settings (verbatim)*: `solidity: { version: "0.8.24", settings: { optimizer: { enabled: true, runs: 200 } } }` — **no evmVersion** (default → `paris`), no metadata knobs.
+- *Offline solc mechanism*: in-config `TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD` subtask override returning npm-installed **solc-js** (`node_modules/solc/soljson.js`, `isSolcJs: true`) for 0.8.24 only; CLAUDE.md: "Do not remove that override."
+- *ISetA/B/C + F1–F12*: full exact signatures extracted (Set A = F1–F4 + F9–F12; Set B = F5–F8; ISetC = optional ERC-8004 layer, no F-numbers). Compliance = parameterized 12-test suite; **"Admission = compliance"**; O2–O8 are empty PORT-TARGET slots.
+
+**Corrections to our onboarding docs (logged, not smoothed — NEXT_STEPS_PLAN v1.0 & Understanding Report stand as written, superseded on these points):**
+1. Gate count: our plan said G0–G5; canon is **G0–G6**.
+2. G0/G1 are **operator-executed** gates (Operator Guide), not CLI-agent work orders; only G2–G5 are WO-encoded (WO-1a/1b/WO-R).
+3. `createPresentation` (F8): **declared in ISetB and implemented on O1** as a replay-protected on-chain anchor (62441 gas measured). The structural finding is "**no ERC provides it natively**" (AnonCreds = Set B coverage ceiling) — recorded in ARCHITECTURE.md §1/§9 + ISetB NatSpec, **not** in the sandbox's FINDINGS.md. Our Understanding Report's "expected absent" phrasing → refine to "no native ERC support; satisfied via anchor pattern."
+4. SP-1 = "ERC-1056 anchor **+ credential anchor pattern**" (not bare ERC-1056); SP-2's ClaimIssuerRegistry is attributed to ERC-740 only as unresolved token **[R1]** — never state as fact.
+5. WO-S namespace stays external to canon (as the directions intended); TEST outputs fold in as **evidence**, not new O-numbers.
+
+**New risks flagged upstream (for architect):**
+- Canon's `solc: ^0.8.24` is a **caret range with no commit pin** — a fresh install could float to a later 0.8.x solc-js. Our checksum-verified vendored `soljson-v0.8.24+commit.e11b9ed9.js` (evidence `P1_solc_vendor_*`) can harden this to an exact artifact.
+- Canonical sandbox requires **Node ≥ 20** (BRINGUP §2) — system Node 24 serves it; our portable Node 16/18 remains correct for the TEST repo's legacy builds only.
+- Sandbox `package.json` has no runnable scripts (`npm test` = exit-1 stub); commands are `npx …`; the documented `IMPL=<Name> npx hardhat run …` env-prefix form needs `$env:IMPL='…'` on PowerShell.
+
+**Fold-in map (TEST → canon):** Build-III operator bring-up → the first **operator-executed G0** on record; a fresh `IMPL=O1_ERC1056` S1 run on this machine → **G1** (compare against the 2026-06-05 trace; expect and re-log the known createDID 162–179K vs <100K deviation); Build-II Origin/ERC-735 claims → **T-735 / G4** material under WO-1a/1b; TEST inventory/plan docs → enter canon only via **WO-0** ingest (documentary evidence; may never resolve empirical tokens).
