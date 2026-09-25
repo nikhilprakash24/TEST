@@ -1,0 +1,37 @@
+=== XV test-triage :: step=T4_buildII_build0_no_04x_compiler ===
+LABEL    : AS-FOUND / read-only triage
+UTC time : 2026-09-25T05:16:30Z
+command  : echo '--- vendored compilers:'; ls -1 *.exe *.js; echo '--- any 0.4.x vendored?'; ls | grep -c 'v0\.4\.' ; echo '--- pragmas needing 0.4.x:'; grep -Hn '^pragma solidity' "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-0-BaseImplementation-CVINModified/SmartContracts/CVIN_ERC725.sol" "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/"*.sol | sed 's#.*/TEST/##'; echo '--- Build-II package.json solc pin / OZ dep:'; grep -E '"solc"|openzeppelin' "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/package.json"; echo '--- Build-II node_modules present?'; [ -d "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/node_modules" ] && echo YES || echo NO; echo '--- 0.4.22-0.4.26 entries in cached list-windows.json (offline read; NOT downloaded):'; grep -oE '"longVersion": "0\.4\.2[2-6][^"]*"' list-windows.json; exit 0
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+--- vendored compilers:
+solc-windows-amd64-v0.8.17+commit.8df45f5f.exe
+solc-windows-amd64-v0.8.19+commit.7dd6d404.exe
+solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe
+soljson-v0.8.17+commit.8df45f5f.js
+soljson-v0.8.19+commit.7dd6d404.js
+soljson-v0.8.24+commit.e11b9ed9.js
+--- any 0.4.x vendored?
+0
+--- pragmas needing 0.4.x:
+CVIN-Implementation-I-ERC725-735/Build-0-BaseImplementation-CVINModified/SmartContracts/CVIN_ERC725.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/ClaimHolder.sol:1:pragma solidity ^0.4.22;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/ClaimVerifier.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/ERC725.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/ERC735.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/KeyHolder.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/VeryGoodCoin.sol:1:pragma solidity 0.4.24;
+CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master/contracts/VeryGoodCrowdsale.sol:1:pragma solidity 0.4.24;
+--- Build-II package.json solc pin / OZ dep:
+    "openzeppelin-solidity": "^1.10.0",
+    "solc": "0.4.24"
+--- Build-II node_modules present?
+NO
+--- 0.4.22-0.4.26 entries in cached list-windows.json (offline read; NOT downloaded):
+"longVersion": "0.4.22+commit.4cb486ee"
+"longVersion": "0.4.23+commit.124ca40d"
+"longVersion": "0.4.24+commit.e67f0147"
+"longVersion": "0.4.25+commit.59dbf8f1"
+"longVersion": "0.4.26+commit.4563c3fc"
+exit: 0

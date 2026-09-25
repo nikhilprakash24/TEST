@@ -1,0 +1,10 @@
+=== XV hub cvin-sc :: step=09_buildinfo_solc ===
+UTC time : 2026-09-25T05:20:25Z
+command  : node -e (read artifacts/build-info/*.json solcLongVersion + input.settings)
+cwd      : runs/hub-cvin-sc/implementation
+node -v  : v18.20.4
+npm -v   : 10.7.0
+=== output ===
+1_blockchain-identity 0.8.24+commit.e11b9ed9 {"enabled":true,"runs":200} viaIR=true evm=paris 42 sources
+cv2x-testbed 0.8.20+commit.a1b79de6 {"enabled":true,"runs":200} viaIR=undefined evm=paris 3 sources
+=== exit code: 0 ===

@@ -1,0 +1,10 @@
+=== XV canon-v1.3 repro :: step=02c_compile_plain ===
+UTC time : 2026-09-25T00:06:55Z
+command  : npx hardhat clean && npx hardhat compile
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+Compiled 12 Solidity files successfully (evm target: paris).
+exit: 0

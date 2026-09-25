@@ -1,0 +1,125 @@
+=== XV canon-v1.3 repro :: step=02b_compile ===
+UTC time : 2026-09-25T00:06:11Z
+command  : npx hardhat compile --verbose
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+2026-09-25T00:06:16.072Z hardhat:core:vars:varsManager Creating a new instance of VarsManager
+2026-09-25T00:06:16.084Z hardhat:core:vars:varsManager Loading ENV variables if any
+2026-09-25T00:06:16.110Z hardhat:core:config Loading Hardhat config from C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\hardhat.config.js
+2026-09-25T00:06:17.703Z hardhat:core:hre Creating HardhatRuntimeEnvironment
+2026-09-25T00:06:17.725Z hardhat:core:global-dir Looking up Client Id at C:\Users\nikhilp\AppData\Local\hardhat-nodejs\Data\analytics.json
+2026-09-25T00:06:17.727Z hardhat:core:global-dir Client Id found: 18ca1f4c-7ac8-4395-8c39-c4908cf4a46f
+2026-09-25T00:06:17.729Z hardhat:core:hre Running task compile
+2026-09-25T00:06:17.731Z hardhat:core:hre Running compile's super
+2026-09-25T00:06:17.731Z hardhat:core:hre Running task compile:get-compilation-tasks
+2026-09-25T00:06:17.731Z hardhat:core:hre Running task compile:solidity
+2026-09-25T00:06:17.732Z hardhat:core:hre Running task compile:solidity:get-source-paths
+2026-09-25T00:06:17.741Z hardhat:core:hre Running task compile:solidity:get-source-names
+2026-09-25T00:06:17.747Z hardhat:core:hre Running task compile:solidity:get-dependency-graph
+2026-09-25T00:06:17.747Z hardhat:core:hre Running task compile:solidity:get-remappings
+2026-09-25T00:06:17.750Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.751Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.751Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.751Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.751Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.752Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.752Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.752Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.752Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.752Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.753Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.753Z hardhat:core:hre Running task compile:solidity:read-file
+2026-09-25T00:06:17.759Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.759Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.760Z hardhat:core:hre Running task compile:solidity:transform-import-name
+2026-09-25T00:06:17.767Z hardhat:core:hre Running task compile:solidity:get-compilation-jobs
+2026-09-25T00:06:17.768Z hardhat:core:tasks:compile The dependency graph was divided in '4' connected components
+2026-09-25T00:06:17.768Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.768Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.769Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O1_ERC1056.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.769Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O1_ERC1056.sol'
+2026-09-25T00:06:17.769Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.770Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.770Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\ISetA.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.770Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.770Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.770Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\ISetB.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.770Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.770Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.770Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\ISetC.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.771Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.771Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.771Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.772Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.772Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.772Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O8_LFDT.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.772Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O8_LFDT.sol'
+2026-09-25T00:06:17.772Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.772Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.772Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O7_ERC8004.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.773Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O7_ERC8004.sol'
+2026-09-25T00:06:17.773Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.773Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.773Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O6_ERC4337.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.773Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O6_ERC4337.sol'
+2026-09-25T00:06:17.773Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.773Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.773Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O5_ERC1155.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.773Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O5_ERC1155.sol'
+2026-09-25T00:06:17.781Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.781Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.782Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O4_ERC725xy.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.782Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O4_ERC725xy.sol'
+2026-09-25T00:06:17.782Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.782Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.782Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O3_ERC725.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.782Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O3_ERC725.sol'
+2026-09-25T00:06:17.782Z hardhat:core:hre Running task compile:solidity:get-compilation-job-for-file
+2026-09-25T00:06:17.783Z hardhat:core:hre Running compile:solidity:get-compilation-job-for-file's super
+2026-09-25T00:06:17.783Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O2_ERC721.sol' will be compiled with version '0.8.24'
+2026-09-25T00:06:17.783Z hardhat:core:compilation-job File 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\interfaces\IMinimalSSI.sol' added as dependency of 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro\contracts\implementations\O2_ERC721.sol'
+2026-09-25T00:06:17.783Z hardhat:core:hre Running task compile:solidity:handle-compilation-jobs-failures
+2026-09-25T00:06:17.784Z hardhat:core:hre Running task compile:solidity:filter-compilation-jobs
+2026-09-25T00:06:17.786Z hardhat:core:tasks:compile '0' jobs were filtered out
+2026-09-25T00:06:17.786Z hardhat:core:hre Running task compile:solidity:merge-compilation-jobs
+2026-09-25T00:06:17.789Z hardhat:core:hre Running task compile:solidity:compile-jobs
+2026-09-25T00:06:17.789Z hardhat:core:hre Running compile:solidity:compile-jobs's super
+2026-09-25T00:06:17.789Z hardhat:core:tasks:compile Compiling 1 jobs
+2026-09-25T00:06:17.793Z hardhat:core:hre Running task compile:solidity:compile-job
+2026-09-25T00:06:17.793Z hardhat:core:tasks:compile Compiling job with version '0.8.24'
+2026-09-25T00:06:17.793Z hardhat:core:hre Running task compile:solidity:get-compiler-input
+2026-09-25T00:06:17.793Z hardhat:core:hre Running compile:solidity:get-compiler-input's super
+2026-09-25T00:06:17.815Z hardhat:core:hre Running task compile:solidity:compile
+2026-09-25T00:06:17.816Z hardhat:core:hre Running task compile:solidity:solc:compile
+2026-09-25T00:06:17.817Z hardhat:core:hre Running task compile:solidity:solc:get-build
+2026-09-25T00:06:17.817Z hardhat:core:hre Running task compile:solidity:log:run-compiler-start
+2026-09-25T00:06:17.817Z hardhat:core:hre Running task compile:solidity:solcjs:run
+2026-09-25T00:06:20.847Z hardhat:core:hre Running task compile:solidity:log:run-compiler-end
+2026-09-25T00:06:20.847Z hardhat:core:hre Running task compile:solidity:check-errors
+2026-09-25T00:06:20.847Z hardhat:core:hre Running task compile:solidity:log:compilation-errors
+2026-09-25T00:06:20.847Z hardhat:core:hre Running compile:solidity:log:compilation-errors's super
+2026-09-25T00:06:20.848Z hardhat:core:hre Running task compile:solidity:emit-artifacts
+2026-09-25T00:06:20.870Z hardhat:core:tasks:compile Emitting artifact for contract 'O1_ERC1056'
+2026-09-25T00:06:20.870Z hardhat:core:hre Running task compile:solidity:get-artifact-from-compilation-output
+2026-09-25T00:06:20.870Z hardhat:core:tasks:compile Emitting artifact for contract 'IMinimalSSI'
+2026-09-25T00:06:20.870Z hardhat:core:hre Running task compile:solidity:get-artifact-from-compilation-output
+2026-09-25T00:06:20.870Z hardhat:core:tasks:compile Emitting artifact for contract 'ISetA'
+2026-09-25T00:06:20.870Z hardhat:core:hre Running task compile:solidity:get-artifact-from-compilation-output
+2026-09-25T00:06:20.870Z hardhat:core:tasks:compile Emitting artifact for contract 'ISetB'
+2026-09-25T00:06:20.870Z hardhat:core:hre Running task compile:solidity:get-artifact-from-compilation-output
+2026-09-25T00:06:20.871Z hardhat:core:tasks:compile Emitting artifact for contract 'ISetC'
+2026-09-25T00:06:20.871Z hardhat:core:hre Running task compile:solidity:get-artifact-from-compilation-output
+2026-09-25T00:06:20.881Z hardhat:core:hre Running task typechain:generate-types
+2026-09-25T00:06:20.884Z hardhat:core:hre Running task compile:solidity:log:compilation-result
+Compiled 12 Solidity files successfully (evm target: paris).
+2026-09-25T00:06:20.885Z hardhat:core:hre Running task compile:remove-obsolete-artifacts
+2026-09-25T00:06:20.894Z hardhat:core:cli Killing Hardhat after successfully running task compile
+exit: 0

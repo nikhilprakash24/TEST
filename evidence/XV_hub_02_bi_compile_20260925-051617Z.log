@@ -1,0 +1,75 @@
+=== XV hub cvin-sc :: step=02_bi_compile ===
+UTC time : 2026-09-25T05:16:17Z
+command  : npx hardhat compile
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc/implementation/1_blockchain-identity
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+[1m[33mWarning:[39m[22m This declaration shadows an existing declaration.
+   --> contracts/MOBI/ERC1056Registry.sol:311:9:
+    |
+311 |         bool isRevoked,
+    |         ^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/MOBI/ERC1056Registry.sol:83:5:
+   |
+83 |     function isRevoked(address identity) public view returns (bool) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:135:9:
+    |
+135 |         string memory make,
+    |         ^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:136:9:
+    |
+136 |         string memory model,
+    |         ^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:137:9:
+    |
+137 |         uint16 year,
+    |         ^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:138:9:
+    |
+138 |         string memory color,
+    |         ^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:139:9:
+    |
+139 |         string memory engineNumber,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:140:9:
+    |
+140 |         uint256 manufacturingDate,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:141:9:
+    |
+141 |         string memory autonomyLevel
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Compiled 42 Solidity files successfully (evm target: paris).
+=== exit code: 0 ===

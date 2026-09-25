@@ -1,0 +1,358 @@
+=== XV hub cvin-sc :: step=03_bi_test ===
+UTC time : 2026-09-25T05:17:40Z
+command  : npx hardhat test
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc/implementation/1_blockchain-identity
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+
+
+  CVINCombinedIdentity (ERC-1056 + ERC-735 hybrid)
+    Deployment & Identity Creation
+      ✔ should deploy and expose the safety-critical claim topic constants
+      ✔ should treat every address as a self-owned identity by default (free identity creation) (41ms)
+    Ownership (ERC-1056 side)
+      ✔ should change owner and emit DIDOwnerChanged with the previousChange pointer (151ms)
+      ✔ should let the new owner keep operating after key rotation, and lock out the old key (143ms)
+      ✔ should reject unauthorized owner changes (58ms)
+    Attributes (event-based, ERC-1056 side)
+      ✔ should set an attribute purely via event with validity (168ms)
+      ✔ should revoke an attribute (validTo = 0) and chain previousChange (67ms)
+      ✔ should reject unauthorized attribute updates (39ms)
+    Delegates (ERC-1056 side)
+      ✔ should add a delegate with validity and emit DIDDelegateChanged (228ms)
+      ✔ should expire delegates after their validity window (80ms)
+      ✔ should revoke a delegate immediately and reject unauthorized delegate ops (103ms)
+    Claims (on-chain, ERC-735 side)
+      ✔ should add a claim with a real issuer signature (ethers raw-digest signing agrees with ecrecover) (128ms)
+      ✔ should reject a claim whose signature does not match the declared issuer
+      ✔ should reject a valid signature over different data (tamper detection)
+      ✔ should reject claim additions from non-owners of the identity
+      ✔ should index claims by topic across the safety-critical subset (69ms)
+      ✔ should remove (revoke) a claim, emitting ClaimRemoved and clearing storage (52ms)
+      ✔ should reject claim removal from parties that are neither owner nor issuer
+    Gas Costs (hybrid benchmark)
+       Gas changeOwner (event-based): 68822
+       Gas setAttribute (event-based): 33594
+       Gas addClaim (on-chain + ecrecover): 289939
+      ✔ should measure gas for the hybrid's core operations
+
+  CVINVehicleDIDRegistry
+    Manufacturer Authorization
+      ✔ should authorize manufacturer
+      ✔ should deauthorize manufacturer
+      ✔ should not allow non-owner to authorize
+    Vehicle DID Creation
+       Gas used for vehicle DID creation: 78047
+      ✔ should create vehicle DID with all attributes
+      ✔ should map VIN to DID correctly
+      ✔ should set correct owner
+      ✔ should not allow duplicate VIN registration
+      ✔ should reject invalid VIN length
+      ✔ should not allow unauthorized manufacturer to create DID
+    Ownership Transfer
+      ✔ should transfer ownership
+      ✔ should not allow unauthorized transfer
+      ✔ should allow new owner to make changes
+    Service Endpoints
+      ✔ should set service endpoint
+      ✔ should not allow unauthorized endpoint setting
+    Verification Delegates
+      ✔ should add verification delegate
+      ✔ should revoke verification delegate
+      ✔ should support different delegate types
+    Query Functions
+      ✔ should return zero address for non-existent VIN
+      ✔ should return empty string for non-existent DID
+
+  EthereumDIDRegistry (ERC-1056)
+    Owner Management
+      ✔ should return identity as default owner
+      ✔ should allow identity to change owner
+      ✔ should not allow unauthorized owner change
+      ✔ should allow new owner to make changes
+      ✔ should increment nonce on signed owner change
+    Delegate Management
+      ✔ should add delegate
+      ✔ should not allow unauthorized delegate addition
+      ✔ should invalidate delegate after expiration
+      ✔ should revoke delegate
+      ✔ should support multiple delegate types
+    Attribute Management
+      ✔ should set attribute
+      ✔ should not allow unauthorized attribute setting
+      ✔ should revoke attribute
+      ✔ should support service endpoint attributes
+    Changed Tracking
+      ✔ should track last changed block
+      ✔ should update changed on delegate operations
+    Gas Costs
+       Gas used for changeOwner: 68864
+      ✔ should measure gas for owner change
+       Gas used for addDelegate: 72241
+      ✔ should measure gas for add delegate
+       Gas used for setAttribute: 51144
+      ✔ should measure gas for set attribute
+
+  CVINVehicleCredential1155 (ERC-1155 multi-token credentials)
+    Deployment
+        [gas] ERC-1155 deploy: 2314487
+      ✔ deploys with admin holding DEFAULT_ADMIN_ROLE and ISSUER_ROLE (gas sanity)
+      ✔ exposes the credential type constants
+    Identity creation (registerVehicle = mint BIRTH_CERT)
+        [gas] ERC-1155 registerVehicle (create identity): 103893
+      ✔ registers a vehicle: mints one BIRTH_CERT, binds VIN, emits events (gas sanity) (88ms)
+      ✔ rejects duplicate registration of the same vehicle or VIN
+      ✔ rejects registerVehicle from a caller without ISSUER_ROLE (negative authorization)
+    Credential issuance
+        [gas] ERC-1155 issueCredential: 57114
+      ✔ issues an INSPECTION_CERT to a registered vehicle and emits CredentialIssued (gas sanity)
+      ✔ rejects issuing to an unregistered vehicle and re-minting BIRTH_CERT via issueCredential
+      ✔ rejects issueCredential from a non-issuer (negative authorization)
+    Metadata update (per-token URI)
+        [gas] ERC-1155 setTokenURI (update attribute): 49156
+      ✔ issuer updates a credential type URI; uri() returns override then falls back (gas sanity)
+      ✔ rejects setTokenURI from a non-issuer
+    Revocation (burn)
+        [gas] ERC-1155 revokeCredential (burn): 30629
+      ✔ issuer revokes a credential; balance goes to zero and CredentialRevoked is emitted (gas sanity)
+      ✔ burning the BIRTH_CERT deregisters the vehicle identity
+      ✔ rejects revocation from a non-issuer (negative authorization)
+    Soulbound transfer restrictions
+      ✔ blocks holder-initiated safeTransferFrom (credentials are soulbound)
+        [gas] ERC-1155 issuerTransferCredential (ownership transfer): 83641
+      ✔ issuer-mediated transfer re-binds the identity to a new vehicle address (gas sanity)
+      ✔ rejects issuerTransferCredential from a non-issuer
+    Interface support
+      ✔ supports ERC-1155 and AccessControl interfaces
+
+  CVINVehicleAccount (ERC-4337)
+    Identity Creation (account deployment)
+       Gas used for identity creation (account deploy): 768192
+      ✔ should deploy with owner and entryPoint set, emitting VehicleAccountCreated
+       Gas setAttribute direct:         49366
+       Gas setAttribute via EntryPoint: 76316
+       4337 indirection overhead:       26950
+      ✔ should measure the 4337 indirection: setAttribute direct vs via entry point (41ms)
+    UserOperation handling
+      ✔ should execute a user operation through the entry point and emit UserOperationHandled
+      ✔ should reject a user operation signed by a non-owner key
+      ✔ should reject a user operation with a wrong nonce (replay protection)
+      ✔ should only allow the entry point to call validateUserOp
+    Execution
+      ✔ should allow the owner to execute a value transfer from the account
+      ✔ should reject execute from non-owner, non-entryPoint callers
+    Attribute Store (vehicle metadata)
+      ✔ should set and read attributes, emitting AttributeChanged
+      ✔ should reject attribute updates from unauthorized callers
+    Key Rotation
+      ✔ should rotate the signing key while the identity address stays constant (87ms)
+      ✔ should not allow rotation to the zero address
+    Social Recovery (guardian)
+      ✔ should let the owner set a guardian, emitting GuardianChanged
+      ✔ should let the guardian recover the identity to a new signing key (75ms)
+      ✔ should reject recovery attempts from non-guardians
+      ✔ should reject guardian changes from unauthorized callers
+
+  ERC721 Combined Test Suite
+    Regular ERC721
+      ✔ Should return the correct name and symbol
+      ✔ Should mint a token
+    Royalty (ERC2981)
+      ✔ Should report the default royalty configured at deployment
+
+  ERC721 Identity-Based Transaction Test Suite
+    ✔ Should verify identity and pay toll
+
+  ERC721 Regular Test Suite with Extended Scenarios
+    ✔ Should mint a token
+    ✔ Should verify identity and eligibility for warranty
+    ✔ Should record the timestamp of toll entry
+    ✔ Should allow payment of toll in native coin
+
+  CVINVehicleClaimHolder (ERC-735)
+    Deployment / identity creation
+        [gas] ERC-735 deploy + identity creation: 1404108
+      ✔ deploys and creates the vehicle identity with VIN and owner (gas sanity)
+      ✔ rejects deployment with an empty VIN
+      ✔ exposes the vehicle-specific claim topic constants
+    addClaim
+        [gas] ERC-735 addClaim: 290224
+      ✔ adds a manufacturer-signed VIN attestation claim and emits ClaimAdded (gas sanity)
+      ✔ indexes claims by topic via getClaimIdsByTopic
+      ✔ rejects a claim whose signature does not match the stated issuer
+      ✔ rejects a valid signature that covers different data (tamper detection)
+      ✔ rejects addClaim from a non-owner caller (negative authorization)
+      ✔ rejects an unsupported signature scheme
+    Claim update (ClaimChanged)
+        [gas] ERC-735 update claim (ClaimChanged): 72220
+      ✔ re-adding a claim for the same (issuer, topic) updates it and emits ClaimChanged (gas sanity) (38ms)
+    removeClaim (revocation)
+        [gas] ERC-735 removeClaim: 72100
+      ✔ owner can remove a claim; emits ClaimRemoved and clears storage (gas sanity)
+      ✔ issuer can revoke their own claim
+      ✔ rejects removeClaim from a caller that is neither owner nor issuer
+      ✔ rejects removing a non-existent claim
+    Ownership transfer
+        [gas] ERC-735 transferOwnership: 28704
+      ✔ transfers identity ownership and emits OwnershipTransferred (gas sanity)
+      ✔ rejects ownership transfer from non-owner
+
+  CVINVehicleLSP8 (LSP8 Identifiable Digital Asset, representative)
+    Deployment
+        [gas] LSP8 deploy: 1631155
+      ✔ deploys with name, symbol and issuing authority as owner (gas sanity)
+      ✔ derives bytes32 tokenIds as keccak256(VIN)
+    Identity creation (mintVehicle)
+        [gas] LSP8 mintVehicle (create identity): 149352
+      ✔ mints a vehicle token, stores the VIN in the token data store, emits LSP8 Transfer (gas sanity) (54ms)
+      ✔ rejects minting the same VIN twice
+      ✔ rejects mint from a caller that is not the issuing authority (negative authorization)
+    Per-token data store (setDataForTokenId / getDataForTokenId)
+        [gas] LSP8 setDataForTokenId (update attribute): 55065
+      ✔ authority sets token data and emits TokenIdDataChanged + DataChanged (gas sanity)
+      ✔ supports batch data writes and reads
+      ✔ rejects setDataForTokenId from a non-authority caller (negative authorization)
+      ✔ rejects setDataForTokenId for a non-existent tokenId
+    Transfer (LSP8 signature: from, to, tokenId, force, data)
+        [gas] LSP8 transfer (vehicle ownership): 80526
+      ✔ token owner transfers the vehicle to a new owner with force=true (gas sanity)
+      ✔ rejects transfer to an EOA when force=false (no LSP1 probing, documented omission)
+      ✔ rejects transfer initiated by a non-token-owner (operators are not implemented)
+      ✔ rejects transfer with a mismatched from address or to the zero address
+    Revocation (revokeVehicle = burn)
+        [gas] LSP8 revokeVehicle (burn): 41877
+      ✔ issuing authority revokes a vehicle token; emits Transfer to zero address (gas sanity) (38ms)
+      ✔ token owner can also burn their own vehicle token
+      ✔ rejects revocation from a caller that is neither authority nor token owner
+    Issuing-authority ownership transfer
+        [gas] LSP8 transferOwnership: 28724
+      ✔ transfers contract ownership and enforces new authority (gas sanity)
+      ✔ rejects ownership transfer from non-owner
+
+  MOBI VID Registry V1 (birth certificates)
+    registerVehicleBirth — the previously-broken path
+        gas(V1 registerVehicleBirth, with attributes): 283895
+      ✔ succeeds with manufacturer != firstOwner and non-empty attributes (regression for both V1 bugs) (55ms)
+      ✔ uses a finite attribute validity (no uint256 overflow panic)
+      ✔ rejects unauthorized manufacturers
+      ✔ rejects duplicate vehicle identity and duplicate VIN hash
+    VIN-hash lookup
+      ✔ resolves a registered VIN hash to the vehicle identity
+    ownership transfer
+        gas(V1 transferVehicleOwnership): 199541
+      ✔ transfers ownership, records history and updates ERC-1056 owner
+      ✔ rejects transfers not initiated by the current owner
+
+  MOBI VID Registry V2 (lifecycle events)
+    recordLifecycleEvent
+        gas(V2 recordLifecycleEvent MAINTENANCE): 306923
+        gas(V2 recordLifecycleEvent INSPECTION): 292635
+        gas(V2 recordLifecycleEvent ACCIDENT): 292539
+        gas(V2 recordLifecycleEvent RECALL): 292463
+        gas(V2 recordLifecycleEvent REGISTRATION): 292494
+      ✔ records MAINTENANCE, INSPECTION, ACCIDENT, RECALL and REGISTRATION events (173ms)
+      ✔ rejects issuers whose role is not allowed for the event type (role gating)
+      ✔ rejects events for unregistered vehicles
+    issuer management
+      ✔ only the registry authority can authorize issuers, and revocation disables issuance
+    attestEvent
+        gas(V2 attestEvent): 121110
+      ✔ lets other authorized parties attest to an event
+      ✔ rejects attestations from unauthorized parties and for unknown events
+    history queries
+      ✔ getCompleteHistory returns birth + event count + last event
+      ✔ getOdometerHistory returns readings in event order
+
+  Security / ERC-1056 (EthereumDIDRegistry)
+    ✔ unauthorizedIssuance: N/A (implicit permissionless DIDs)
+    ✔ unauthorizedAttributeWrite: attacker cannot setAttribute on a victim DID
+    ✔ unauthorizedDelegateOrClaim: attacker cannot addDelegate on a victim DID
+    ✔ unauthorizedRevocation: attacker cannot revokeAttribute on a victim DID
+    ✔ identityHijack: attacker cannot changeOwner of a victim DID
+    ✔ signatureReplay: a consumed setAttributeSigned meta-tx cannot be replayed
+
+  Security / ERC-721 (CVINVehicleNFT)
+    ✔ unauthorizedIssuance: attacker without MANUFACTURER_ROLE cannot mint
+    ✔ unauthorizedAttributeWrite: attacker without SERVICE_CENTER_ROLE cannot addServiceRecord
+    ✔ unauthorizedDelegateOrClaim: attacker cannot approve a token it does not own
+    ✔ unauthorizedRevocation: attacker without DEFAULT_ADMIN_ROLE cannot deactivateVehicle
+    ✔ identityHijack: attacker cannot transferFrom a victim's token
+    ✔ signatureReplay: N/A (no signed/relayed operation)
+
+  Security / ERC-725 (CVIN_SCBasedAccOrID_DID_ERC725Basic)
+    ✔ unauthorizedIssuance: N/A (self-sovereign per-identity deployment)
+    ✔ unauthorizedAttributeWrite: attacker cannot addKey to a victim identity
+    ✔ unauthorizedDelegateOrClaim: attacker cannot add a CLAIM-signer key
+    ✔ unauthorizedRevocation: attacker cannot removeKey from a victim identity
+    ✔ identityHijack: attacker cannot transferOwnership of a victim identity
+    ✔ signatureReplay: N/A (no signed/relayed operation)
+
+  Security / ERC-735 (CVINVehicleClaimHolder)
+    ✔ unauthorizedIssuance: N/A (self-sovereign per-vehicle deployment)
+    ✔ unauthorizedAttributeWrite: non-owner cannot addClaim (update a claim)
+    ✔ unauthorizedDelegateOrClaim: owner cannot anchor a claim with a forged issuer signature
+    ✔ unauthorizedRevocation: a stranger cannot removeClaim
+    ✔ identityHijack: non-owner cannot transferOwnership (55ms)
+    ✔ signatureReplay: a cross-instance issuer signature cannot be replayed onto another vehicle
+
+  Security / ERC-1155 (CVINVehicleCredential1155)
+    ✔ unauthorizedIssuance: attacker without ISSUER_ROLE cannot registerVehicle
+    ✔ unauthorizedAttributeWrite: attacker without ISSUER_ROLE cannot setTokenURI
+    ✔ unauthorizedDelegateOrClaim: attacker without ISSUER_ROLE cannot issueCredential
+    ✔ unauthorizedRevocation: attacker without ISSUER_ROLE cannot revokeCredential
+    ✔ identityHijack: soulbound credential cannot be pulled by an attacker
+    ✔ signatureReplay: N/A (no signed/relayed operation)
+
+  Security / ERC-4337 (CVINVehicleAccount + CVINMinimalEntryPoint)
+    ✔ unauthorizedIssuance: N/A (self-sovereign account deployment)
+    ✔ unauthorizedAttributeWrite: attacker cannot setAttribute directly
+    ✔ unauthorizedDelegateOrClaim: attacker cannot setGuardian
+    ✔ unauthorizedRevocation: attacker cannot clear the guardian
+    ✔ identityHijack: attacker cannot rotate the key nor abuse recovery
+    ✔ signatureReplay: a consumed UserOperation cannot be replayed through the EntryPoint
+
+  Security / LSP8 (CVINVehicleLSP8)
+    ✔ unauthorizedIssuance: attacker (not the issuing authority) cannot mintVehicle
+    ✔ unauthorizedAttributeWrite: attacker cannot setDataForTokenId
+    ✔ unauthorizedDelegateOrClaim: N/A (no operator/claim model)
+    ✔ unauthorizedRevocation: attacker (neither authority nor token owner) cannot revokeVehicle
+    ✔ identityHijack: attacker cannot transfer a token it does not own
+    ✔ signatureReplay: N/A (no signed/relayed operation)
+
+  Security / MOBI-VID-V2 (MOBIVIDRegistryV2)
+    ✔ unauthorizedIssuance: attacker (not an authorized manufacturer) cannot registerVehicleBirth
+    ✔ unauthorizedAttributeWrite: unauthorized issuer cannot recordLifecycleEvent
+    ✔ unauthorizedDelegateOrClaim: unauthorized party cannot attestEvent
+    ✔ unauthorizedRevocation: attacker cannot revokeIdentity of a victim vehicle
+    ✔ identityHijack: attacker cannot transferVehicleOwnership of a victim vehicle
+    ✔ signatureReplay: N/A (no signed/relayed operation in this implementation)
+
+  Security / CVIN-Combined (CVINCombinedIdentity)
+    ✔ unauthorizedIssuance: N/A (implicit permissionless identities)
+    ✔ unauthorizedAttributeWrite: attacker cannot setAttribute on a victim identity
+    ✔ unauthorizedDelegateOrClaim: a claim with a forged issuer signature is rejected
+    ✔ unauthorizedRevocation: a stranger cannot removeClaim
+    ✔ identityHijack: attacker cannot changeOwner of a victim identity
+    ✔ signatureReplay: a claim signature bound to one identity cannot be replayed onto another
+
+
+=== Security matrix (attack outcomes) ===
+attack	ERC-1056	ERC-721	ERC-725	ERC-735	ERC-1155	ERC-4337	LSP8	MOBI-VID-V2	CVIN-Combined
+unauthorizedIssuance	n/a	DEF	n/a	n/a	DEF	n/a	DEF	DEF	n/a
+unauthorizedAttributeWrite	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF
+unauthorizedDelegateOrClaim	DEF	DEF	DEF	DEF	DEF	DEF	n/a	DEF	DEF
+unauthorizedRevocation	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF
+identityHijack	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF	DEF
+signatureReplay	DEF	n/a	n/a	DEF	n/a	DEF	n/a	n/a	DEF
+
+Security matrix written to C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\hub-cvin-sc\implementation\4_comparison-framework\security-analysis\results\attack_results.json
+
+  201 passing (14s)
+
+=== exit code: 0 ===

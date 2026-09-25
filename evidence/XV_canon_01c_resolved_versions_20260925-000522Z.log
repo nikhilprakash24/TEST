@@ -1,0 +1,35 @@
+=== XV canon-v1.3 repro :: step=01c_resolved_versions ===
+UTC time : 2026-09-25T00:05:22Z
+command  : echo "package-lock.json now present: $( [ -f package-lock.json ] && echo YES || echo NO )"; echo "--- npm ls --depth=0 ---"; npm ls hardhat solc @nomicfoundation/hardhat-toolbox --depth=0; echo "npm ls exit: $?"; echo "--- solc package.json version / solc.version() ---"; node -e "console.log(require(\"solc/package.json\").version, require(\"solc\").version())"; echo "--- lockfile solc entry ---"; node -e "const l=require(\"./package-lock.json\");for(const k of [\"node_modules/solc\",\"node_modules/hardhat\",\"node_modules/@nomicfoundation/hardhat-toolbox\"]){const e=l.packages[k];console.log(k, e.version, e.resolved, e.integrity)}"; echo "--- latest solc on registry ---"; npm view solc version; npm view solc@^0.8.24 version | tail -5; echo "--- sha256 ---"; sha256sum node_modules/solc/soljson.js /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/soljson-v0.8.24+commit.e11b9ed9.js; echo "expected vendored: 11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1"; ls -la node_modules/solc/soljson.js
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+package-lock.json now present: YES
+--- npm ls --depth=0 ---
+cvin-sandbox@1.0.0 C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\canon-v1.3-repro
++-- @nomicfoundation/hardhat-toolbox@5.0.0
++-- hardhat@2.29.1
+`-- solc@0.8.37
+
+npm ls exit: 0
+--- solc package.json version / solc.version() ---
+0.8.37 0.8.37+commit.f401782d.Emscripten.clang
+--- lockfile solc entry ---
+node_modules/solc 0.8.37 https://registry.npmjs.org/solc/-/solc-0.8.37.tgz sha512-ieUYdPDRGNKMsZpCfi9tY64Q+ASoL8tyhLuvf9cFiqDs+6ijlx8Wn2CRi0N71AlCvRx0V092rlUYu3b3PuxWlA==
+node_modules/hardhat 2.29.1 https://registry.npmjs.org/hardhat/-/hardhat-2.29.1.tgz sha512-BVPE15F9+gWH5Eof7aAhprXTi05mNHwn32fwIKMeMFqrkU3Jun1f7NubXsJ0SOeMqu0mchF6KkW7rx1CHinlWw==
+node_modules/@nomicfoundation/hardhat-toolbox 5.0.0 https://registry.npmjs.org/@nomicfoundation/hardhat-toolbox/-/hardhat-toolbox-5.0.0.tgz sha512-FnUtUC5PsakCbwiVNsqlXVIWG5JIb5CEZoSXbJUsEBun22Bivx2jhF1/q9iQbzuaGpJKFQyOhemPB2+XlEE6pQ==
+--- latest solc on registry ---
+0.8.37
+solc@0.8.33 '0.8.33'
+solc@0.8.34 '0.8.34'
+solc@0.8.35 '0.8.35'
+solc@0.8.36 '0.8.36'
+solc@0.8.37 '0.8.37'
+--- sha256 ---
+221d7a667378b5068d913e75fe092507e061363cd1d23b64c49ae82febabad4c *node_modules/solc/soljson.js
+11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1 */c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/soljson-v0.8.24+commit.e11b9ed9.js
+expected vendored: 11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1
+-rw-r--r-- 1 nikhilp 197121 9237611 Sep 24 16:39 node_modules/solc/soljson.js
+exit: 0

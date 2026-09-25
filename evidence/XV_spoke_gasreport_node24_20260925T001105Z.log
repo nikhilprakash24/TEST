@@ -1,0 +1,139 @@
+=== XV spoke evidence log ===
+UTC:      2026-09-25T00:11:05Z
+step:     gasreport_node24
+command:  REPORT_GAS=true npx hardhat test; rc=$?; echo '----- gas-report.txt -----'; cat gas-report.txt; exit $rc
+cwd:      /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/spoke-ssi-did/1_blockchain-identity
+node -v:  v24.16.0  (/c/Program Files/nodejs/node)
+npm -v:   11.13.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c (claude/clone-cvin-id-scs-011CUyxScetMdSQFkuQUNLTt)
+==============================
+
+  CVINVehicleDIDRegistry
+    Manufacturer Authorization
+      ✔ should authorize manufacturer
+      ✔ should deauthorize manufacturer
+      ✔ should not allow non-owner to authorize
+    Vehicle DID Creation
+       Gas used for vehicle DID creation: 78068
+      ✔ should create vehicle DID with all attributes
+      ✔ should map VIN to DID correctly
+      ✔ should set correct owner
+      ✔ should not allow duplicate VIN registration
+      ✔ should reject invalid VIN length
+      ✔ should not allow unauthorized manufacturer to create DID
+    Ownership Transfer
+      ✔ should transfer ownership
+      ✔ should not allow unauthorized transfer
+      ✔ should allow new owner to make changes
+    Service Endpoints
+      ✔ should set service endpoint
+      ✔ should not allow unauthorized endpoint setting
+    Verification Delegates
+      ✔ should add verification delegate
+      ✔ should revoke verification delegate
+      ✔ should support different delegate types
+    Query Functions
+      ✔ should return zero address for non-existent VIN
+      ✔ should return empty string for non-existent DID
+
+  EthereumDIDRegistry (ERC-1056)
+    Owner Management
+      ✔ should return identity as default owner
+      ✔ should allow identity to change owner
+      ✔ should not allow unauthorized owner change
+      ✔ should allow new owner to make changes
+      ✔ should increment nonce on signed owner change
+    Delegate Management
+      ✔ should add delegate
+      ✔ should not allow unauthorized delegate addition
+      ✔ should invalidate delegate after expiration
+      ✔ should revoke delegate
+      ✔ should support multiple delegate types
+    Attribute Management
+      ✔ should set attribute
+      ✔ should not allow unauthorized attribute setting
+      ✔ should revoke attribute
+      ✔ should support service endpoint attributes
+    Changed Tracking
+      ✔ should track last changed block
+      ✔ should update changed on delegate operations
+    Gas Costs
+       Gas used for changeOwner: 68854
+      ✔ should measure gas for owner change
+       Gas used for addDelegate: 72219
+      ✔ should measure gas for add delegate
+       Gas used for setAttribute: 51126
+      ✔ should measure gas for set attribute
+
+  ERC721 Combined Test Suite
+    Regular ERC721
+      ✔ Should return the correct name and symbol
+      ✔ Should mint a token
+    Monolithic ERC721
+      ✔ Should return the correct name and symbol
+      ✔ Should mint a token
+
+  ERC721 Identity-Based Transaction Test Suite
+    ✔ Should verify identity and pay toll
+
+  ERC721 Regular Test Suite with Extended Scenarios
+    ✔ Should mint a token
+    ✔ Should verify identity and eligibility for warranty
+    ✔ Should record the timestamp of toll entry
+    ✔ Should allow payment of toll in native coin
+
+
+  47 passing (13s)
+
+----- gas-report.txt -----
+·-----------------------------------------------------------------|---------------------------|-------------|-----------------------------·
+|                      Solc version: 0.8.24                       ·  Optimizer enabled: true  ·  Runs: 200  ·  Block limit: 60000000 gas  │
+··································································|···························|·············|······························
+|  Methods                                                                                                                                │
+···································|······························|·············|·············|·············|···············|··············
+|  Contract                        ·  Method                      ·  Min        ·  Max        ·  Avg        ·  # calls      ·  usd (avg)  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721             ·  mint                        ·      95296  ·     117819  ·     102804  ·            6  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721             ·  payToll                     ·          -  ·          -  ·      37173  ·            5  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721             ·  recordEntry                 ·          -  ·          -  ·      49685  ·            2  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721_Monolithic  ·  mint                        ·          -  ·          -  ·      94645  ·            1  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  addVerificationDelegate     ·      64652  ·      64656  ·      64653  ·            6  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  createVehicleDID            ·          -  ·          -  ·      78068  ·           13  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  revokeVerificationDelegate  ·          -  ·          -  ·      41876  ·            1  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  setAuthorizedManufacturer   ·      25894  ·      47806  ·      46763  ·           21  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  setServiceEndpoint          ·          -  ·          -  ·      43788  ·            2  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry          ·  transferVehicleOwnership    ·          -  ·          -  ·      57146  ·            3  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  addDelegate                 ·      55119  ·      72219  ·      70319  ·            9  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  changeOwner                 ·      34658  ·      68854  ·      64574  ·           16  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  changeOwnerSigned           ·          -  ·          -  ·      96053  ·            1  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  revokeAttribute             ·          -  ·          -  ·      33590  ·            2  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  revokeDelegate              ·          -  ·          -  ·      32856  ·            3  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry             ·  setAttribute                ·      51126  ·      51318  ·      51181  ·            7  ·          -  │
+···································|······························|·············|·············|·············|···············|··············
+|  Deployments                                                    ·                                         ·  % of limit   ·             │
+··································································|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721                                            ·          -  ·          -  ·    1325111  ·        2.2 %  ·          -  │
+··································································|·············|·············|·············|···············|··············
+|  CVIN_NFT_DID_ERC721_Monolithic                                 ·          -  ·          -  ·    1505053  ·        2.5 %  ·          -  │
+··································································|·············|·············|·············|···············|··············
+|  CVINVehicleDIDRegistry                                         ·    1715162  ·    1715174  ·    1715173  ·        2.9 %  ·          -  │
+··································································|·············|·············|·············|···············|··············
+|  EthereumDIDRegistry                                            ·          -  ·          -  ·     958714  ·        1.6 %  ·          -  │
+·-----------------------------------------------------------------|-------------|-------------|-------------|---------------|-------------·==============================
+EXIT CODE: 0
+END UTC:   2026-09-25T00:11:33Z

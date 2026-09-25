@@ -1,0 +1,646 @@
+=== XV test-triage :: step=T3c2_hardhat_test_node16 ===
+LABEL    : PREVIEW - does not resolve [TS-1]; sanctioned run requires operator D2 (scratch hardhat test, NON-GRADUATING)
+UTC time : 2026-09-25T00:10:12Z
+command  : export PATH="/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v16.19.0-win-x64:$PATH" HARDHAT_DISABLE_TELEMETRY_PROMPT=true HTTP_PROXY=http://127.0.0.1:9 HTTPS_PROXY=http://127.0.0.1:9 http_proxy=http://127.0.0.1:9 https_proxy=http://127.0.0.1:9; echo "node: $(which node) $(node -v)"; echo "npm: $(npm -v)"; echo "hardhat: $(node -p "require('hardhat/package.json').version")"; echo "network guard: HTTP(S)_PROXY -> 127.0.0.1:9 (dead port)"; echo '--- hardhat test (equivalent of npx hardhat test; bin invoked directly to guarantee no npx registry lookup) ---'; node node_modules/hardhat/internal/cli/bootstrap.js test --config hardhat.config.offline.ts
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/restore/implementations
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+node: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v16.19.0-win-x64/node v16.19.0
+npm: 8.19.3
+hardhat: 2.13.1
+network guard: HTTP(S)_PROXY -> 127.0.0.1:9 (dead port)
+--- hardhat test (equivalent of npx hardhat test; bin invoked directly to guarantee no npx registry lookup) ---
+Compiled 42 Solidity files successfully
+
+  Calculating ERC165InterfaceIds
+    ✔ ERC725X
+    ✔ ERC725Y
+
+  ERC725
+    when using ERC725 with constructor
+      when deploying the contract
+        ✔ should revert when giving address(0) as owner
+        ✔ should deploy the contract with the owner's address
+        ✔ should deploy and fund the contract with `msg.value`
+    when using ERC725 with proxy
+      when deploying the base implementation contract
+        ✔ prevent any address from calling the initialize(...) function on the implementation
+      when deploying the contract as proxy
+        ✔ should have registered the ERC725X interface
+        ✔ should revert when initializing with address(0) as owner
+        ✔ should initialize the contract with the owner's address
+        ✔ should initialize and fund the contract with `msg.value`
+
+  ERC725X
+    when using ERC725X contract with constructor
+      when deploying the contract
+        ✔ should revert when giving address(0) as owner
+        ✔ should deploy and fund the contract with `msg.value`
+        once the contract was deployed
+          when the contract was initialized
+            ✔ should have registered the ERC165 interface
+            ✔ should have registered the ERC725X interface
+            ✔ should have set the correct owner
+            ✔ should have funded the contract with `msg.value` when `initialize(...)` was called
+      when testing deployed contract
+        When testing ownership
+          When owner is transferring ownership
+            ✔ should pass and emit OwnershipTransferred event 
+            ✔ should revert when transferring ownership to `address(0)`
+          When non-owner is transferring ownership
+            ✔ should revert
+          When owner is renouncing ownership
+            ✔ should pass and emit OwnershipTransferred event
+          When non-owner is renouncing ownership
+            ✔ should revert
+        When testing execution
+          When testing the execute function
+            When testing execution ownership
+              When owner is executing
+                ✔ should pass and emit Executed event
+              When non-owner is executing
+                ✔ should revert
+            When testing Operation CALL
+              When sending native token
+                to a smart contract implementing receive()
+                  ✔ should pass
+                to a smart contract implementing payable fallback()
+                  ✔ should pass
+                to a smart contract implementing non-payable fallback()
+                  ✔ should revert
+                to a smart contract not implementing receive()
+                  ✔ should revert
+                to a smart contract implementing receive() that reverts with custom error
+                  ✔ should revert with custom errors
+                to an EOA without sending some bytes
+                  ✔ should pass and emit an event with bytes4(0) as data
+                to an EOA with sending some bytes (more than 4 bytes)
+                  ✔ should pass and emit an event with first 4 bytes sent
+                to an EOA with sending some bytes (less than 4 bytes)
+                  ✔ should emit an event with bytes padded with 0
+                without having enough balance
+                  ✔ should revert
+              When interacting with functions
+                that change the state
+                  ✔ should pass and emit event with function selector
+                that is marked payable
+                  ✔ should pass and emit event with function selector
+                that is marked view
+                  ✔ should pass
+                that reverts with custom errors
+                  ✔ should revert and bubble the error
+                that reverts with string errors
+                  ✔ should revert with string and bubble the error
+                that returns
+                  arrays of strings
+                    ✔ should pass and return bytes and decode their values
+            When testing Operation CREATE
+              When creating a contract
+                without passing the contract deployment code
+                  ✔ should revert
+                without constructor
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor without arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments but without passing them
+                  ✔ should revert and not create the contract
+                without specifying to as address(0)
+                  ✔ should revert and not create the contract
+                that have a payable constructor with sending value 
+                  ✔ should create the contract and emit ContractCreated event
+                that have a payable constructor with sending value more than balance 
+                  ✔ should revert and not create the contract
+                that doesn't have a payable constructor with sending value 
+                  ✔ should revert and not create the contract
+            When testing Operation CREATE2
+              When creating a contract
+                without constructor
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor without arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments but without passing them
+                  ✔ should revert and not create the contract
+                with constructor with arguments but without passing the salt
+                  ✔ should revert and not create the contract
+                without specifying to as address(0)
+                  ✔ should revert and not create the contract
+                that have a payable constructor with sending value 
+                  ✔ should create the contract and emit ContractCreated event
+                that have a payable constructor with sending value more than balance 
+                  ✔ should revert and not create the contract
+                that doesn't have a payable constructor with sending value 
+                  ✔ should revert and not create the contract
+                with the same bytecode and salt 
+                  ✔ should create the contract first time and revert on the second try
+                and destructing it and re-create it at the same address
+                  ✔ should pass
+            When testing Operation STATICCALL
+              When interacting with a EOA
+                When sendng some bytes
+                  ✔ should pass and emit an event with data sent
+                When sendng value
+                  ✔ should revert 
+              When interacting with a function
+                that change state
+                  ✔ should revert
+                marked as view
+                  ✔ should pass
+                that reverts with a custom error
+                  ✔ should revert
+                that reverts with a string error
+                  ✔ should revert
+            When testing Operation DELEGATECALL
+              When interacting with a EOA
+                When sendng value
+                  ✔ should revert 
+              When interacting with a function
+                that reverts with a custom error
+                  ✔ should revert
+                that reverts with a string error
+                  ✔ should revert
+                that include selfdestruct
+                  ✔ should destroy the erc725X contract
+            When providing wrong operation type
+              ✔ should revert
+          When testing the execute array function
+            ✔ should revert with error `ERC725X_ExecuteParametersEmptyArray` if all the array parameters are empty arrays [] [] [] []
+            ✔ should revert with error `ERC725X_ExecuteParametersLengthMismatch` if at least one of the array parameter is an empty array []
+            When testing execution ownership
+              ✔ should revert if all the array parameters are empty arrays [] [] [] []
+              ✔ should revert with error `ERC725X_ExecuteParametersLengthMismatch` if at least one of the array parameter is an empty array []
+              When owner is executing
+                ✔ should pass and emit Executed event
+              When non-owner is executing
+                ✔ should revert
+            When testing combining operations
+              When combining 2 CALL Operations
+                When both pass
+                  ✔ should pass and emit 2 Executed Event
+                  ✔ should return array of bytes as return values
+                When one call revert
+                  ✔ should revert with the reason of the call that reverts
+                When both revert
+                  ✔ should revert with the first revert reason
+              When combining CALL and CREATE Operations
+                When both pass
+                  ✔ should pass and emit 1 Executed and 1 ContractCreated Event
+                  ✔ should return array of bytes as return values and contractCreated
+                When one call revert
+                  ✔ should revert with the reason of the call that reverts
+              When combining CREATE and CREATE2 Operations
+                When both pass
+                  ✔ should pass and emit 2 ContractCreated Event and return array of contractCreated addresses
+                When one creation revert
+                  ✔ should revert with the reason of the creation that reverts
+              When combining DELEGATECALL and CALL Operations
+                When calling after destructing the contract
+                  ✔ should pass and emit 2 Executed Event and then be destructed
+            When providing wrong operation type with other operations
+              when it's the first operation in the operation list
+                ✔ should revert
+              when it's the last operation in the operation list
+                ✔ should revert
+            Edge cases 
+              When sending value in second call greater than the balance
+                ✔ should revert with the custom error
+              When passing un-equal parameters number
+                for OperationsType
+                  ✔ should revert with the custom error
+                for to
+                  ✔ should revert with the custom error
+                for values
+                  ✔ should revert with the custom error
+                for data
+                  ✔ should revert with the custom error
+                for more than 1 parameter
+                  ✔ should revert with the custom error
+    when using ERC725X contract with proxy
+      when deploying the base implementation contract
+        ✔ prevent any address from calling the initialize(...) function on the implementation
+      when deploying the contract as proxy
+        ✔ should revert when initializing with address(0) as owner
+        when initializing the contract
+          when the contract was initialized
+            ✔ should have registered the ERC165 interface
+            ✔ should have registered the ERC725X interface
+            ✔ should have set the correct owner
+            ✔ should have funded the contract with `msg.value` when `initialize(...)` was called
+        when calling initialize more than once
+          ✔ should revert
+      when testing deployed contract
+        When testing ownership
+          When owner is transferring ownership
+            ✔ should pass and emit OwnershipTransferred event 
+            ✔ should revert when transferring ownership to `address(0)`
+          When non-owner is transferring ownership
+            ✔ should revert
+          When owner is renouncing ownership
+            ✔ should pass and emit OwnershipTransferred event
+          When non-owner is renouncing ownership
+            ✔ should revert
+        When testing execution
+          When testing the execute function
+            When testing execution ownership
+              When owner is executing
+                ✔ should pass and emit Executed event
+              When non-owner is executing
+                ✔ should revert
+            When testing Operation CALL
+              When sending native token
+                to a smart contract implementing receive()
+                  ✔ should pass
+                to a smart contract implementing payable fallback()
+                  ✔ should pass
+                to a smart contract implementing non-payable fallback()
+                  ✔ should revert
+                to a smart contract not implementing receive()
+                  ✔ should revert
+                to a smart contract implementing receive() that reverts with custom error
+                  ✔ should revert with custom errors
+                to an EOA without sending some bytes
+                  ✔ should pass and emit an event with bytes4(0) as data
+                to an EOA with sending some bytes (more than 4 bytes)
+                  ✔ should pass and emit an event with first 4 bytes sent
+                to an EOA with sending some bytes (less than 4 bytes)
+                  ✔ should emit an event with bytes padded with 0
+                without having enough balance
+                  ✔ should revert
+              When interacting with functions
+                that change the state
+                  ✔ should pass and emit event with function selector
+                that is marked payable
+                  ✔ should pass and emit event with function selector
+                that is marked view
+                  ✔ should pass
+                that reverts with custom errors
+                  ✔ should revert and bubble the error
+                that reverts with string errors
+                  ✔ should revert with string and bubble the error
+                that returns
+                  arrays of strings
+                    ✔ should pass and return bytes and decode their values
+            When testing Operation CREATE
+              When creating a contract
+                without passing the contract deployment code
+                  ✔ should revert
+                without constructor
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor without arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments but without passing them
+                  ✔ should revert and not create the contract
+                without specifying to as address(0)
+                  ✔ should revert and not create the contract
+                that have a payable constructor with sending value 
+                  ✔ should create the contract and emit ContractCreated event
+                that have a payable constructor with sending value more than balance 
+                  ✔ should revert and not create the contract
+                that doesn't have a payable constructor with sending value 
+                  ✔ should revert and not create the contract
+            When testing Operation CREATE2
+              When creating a contract
+                without constructor
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor without arguments
+                  ✔ should create the contract and emit ContractCreated event
+                with constructor with arguments but without passing them
+                  ✔ should revert and not create the contract
+                with constructor with arguments but without passing the salt
+                  ✔ should revert and not create the contract
+                without specifying to as address(0)
+                  ✔ should revert and not create the contract
+                that have a payable constructor with sending value 
+                  ✔ should create the contract and emit ContractCreated event
+                that have a payable constructor with sending value more than balance 
+                  ✔ should revert and not create the contract
+                that doesn't have a payable constructor with sending value 
+                  ✔ should revert and not create the contract
+                with the same bytecode and salt 
+                  ✔ should create the contract first time and revert on the second try
+                and destructing it and re-create it at the same address
+                  ✔ should pass
+            When testing Operation STATICCALL
+              When interacting with a EOA
+                When sendng some bytes
+                  ✔ should pass and emit an event with data sent
+                When sendng value
+                  ✔ should revert 
+              When interacting with a function
+                that change state
+                  ✔ should revert
+                marked as view
+                  ✔ should pass
+                that reverts with a custom error
+                  ✔ should revert
+                that reverts with a string error
+                  ✔ should revert
+            When testing Operation DELEGATECALL
+              When interacting with a EOA
+                When sendng value
+                  ✔ should revert 
+              When interacting with a function
+                that reverts with a custom error
+                  ✔ should revert
+                that reverts with a string error
+                  ✔ should revert
+                that include selfdestruct
+                  ✔ should destroy the erc725X contract
+            When providing wrong operation type
+              ✔ should revert
+          When testing the execute array function
+            ✔ should revert with error `ERC725X_ExecuteParametersEmptyArray` if all the array parameters are empty arrays [] [] [] []
+            ✔ should revert with error `ERC725X_ExecuteParametersLengthMismatch` if at least one of the array parameter is an empty array []
+            When testing execution ownership
+              ✔ should revert if all the array parameters are empty arrays [] [] [] []
+              ✔ should revert with error `ERC725X_ExecuteParametersLengthMismatch` if at least one of the array parameter is an empty array []
+              When owner is executing
+                ✔ should pass and emit Executed event
+              When non-owner is executing
+                ✔ should revert
+            When testing combining operations
+              When combining 2 CALL Operations
+                When both pass
+                  ✔ should pass and emit 2 Executed Event
+                  ✔ should return array of bytes as return values
+                When one call revert
+                  ✔ should revert with the reason of the call that reverts
+                When both revert
+                  ✔ should revert with the first revert reason
+              When combining CALL and CREATE Operations
+                When both pass
+                  ✔ should pass and emit 1 Executed and 1 ContractCreated Event
+                  ✔ should return array of bytes as return values and contractCreated
+                When one call revert
+                  ✔ should revert with the reason of the call that reverts
+              When combining CREATE and CREATE2 Operations
+                When both pass
+                  ✔ should pass and emit 2 ContractCreated Event and return array of contractCreated addresses
+                When one creation revert
+                  ✔ should revert with the reason of the creation that reverts
+              When combining DELEGATECALL and CALL Operations
+                When calling after destructing the contract
+                  ✔ should pass and emit 2 Executed Event and then be destructed
+            When providing wrong operation type with other operations
+              when it's the first operation in the operation list
+                ✔ should revert
+              when it's the last operation in the operation list
+                ✔ should revert
+            Edge cases 
+              When sending value in second call greater than the balance
+                ✔ should revert with the custom error
+              When passing un-equal parameters number
+                for OperationsType
+                  ✔ should revert with the custom error
+                for to
+                  ✔ should revert with the custom error
+                for values
+                  ✔ should revert with the custom error
+                for data
+                  ✔ should revert with the custom error
+                for more than 1 parameter
+                  ✔ should revert with the custom error
+
+  ERC725Y
+    when using ERC725Y contract with constructor
+      when deploying the contract
+        ✔ should revert when giving address(0) as owner
+        once the contract was deployed
+          when the contract was initialized
+            ✔ should have set the correct owner
+            ✔ should have deployed and funded the contract with `msg.value`
+            ✔ should have registered the ERC165 interface
+            ✔ should have registered the ERC725Y interface
+      when testing deployed contract
+        When testing ownership
+          When owner is transferring ownership
+            ✔ should pass and emit OwnershipTransferred event
+            ✔ should revert when transferring ownership to `address(0)`
+          When non-owner is transferring ownership
+            ✔ should revert
+          When owner is renouncing ownership
+            ✔ should pass and emit OwnershipTransferred event
+          When non-owner is renouncing ownership
+            ✔ should revert
+        When testing setting data
+          When sending value to setData
+            ✔ should revert when sending value to setData(..)
+            ✔ should revert when sending value to setDataBatch(..)
+          When using setData
+            When owner is setting data
+              ✔ should pass and emit DataChanged event
+            When non-owner is setting data
+              ✔ should revert
+            When interacting from a smart Contract
+              ✔ should pass and emit DataChanged event
+            When interacting from an EOA
+              when setting a new data Key
+                ✔ should pass and emit DataChanged event
+              when updating an existing data Key
+                ✔ should pass and emit DataChanged event
+              when removing an existing data Key
+                ✔ should pass and emit DataChanged event
+              when setting large bytes in the storage
+                ✔ should pass and emit DataChanged event
+          When using setDataBatch
+            ✔ should revert if all parameters are empty arrays [] []
+            ✔ should revert if at least one of the parameters is an empty array []
+            When owner is setting data
+              ✔ should pass and emit DataChanged event
+            When non-owner is setting data
+              ✔ should revert
+            When interacting from a smart Contract
+              ✔ should pass and emit DataChanged event
+            When interacting from an EOA
+              when setting a new data Key
+                ✔ should pass and emit DataChanged event
+              when updating an existing data Key
+                ✔ should pass and emit DataChanged event
+              when removing an existing data Key
+                ✔ should pass and emit DataChanged event
+              when setting large bytes in the storage
+                ✔ should pass and emit DataChanged event
+              when data keys length != data values length
+                ✔ should revert
+        When testing getting data
+          When using getData(bytes32)
+            When owner is setting data
+              ✔ should pass
+            When non-owner is setting data
+              ✔ should pass
+            When interacting from a smart Contract
+              ✔ should pass
+            When interacting from an EOA
+              When getting normal sizeData
+                ✔ should pass
+              When getting big sizeData
+                ✔ should pass
+          When using getDataBatch(bytes32[])
+            When owner is setting data
+              ✔ should pass
+            When non-owner is setting data
+              ✔ should pass
+            When interacting from a smart Contract
+              ✔ should pass
+            When interacting from an EOA
+              When getting normal sizeData
+                ✔ should pass
+              When getting big sizeData
+                ✔ should pass
+              When getting many entries
+                ✔ should pass
+    when using ERC725Y contract with proxy
+      when deploying the base implementation contract
+        ✔ prevent any address from calling the initialize(...) function on the implementation
+      when deploying the contract as proxy
+        ✔ should revert when initializing with address(0) as owner
+        when initializing the contract
+          when the contract was initialized
+            ✔ should have set the correct owner
+            ✔ should have deployed and funded the contract with `msg.value`
+            ✔ should have registered the ERC165 interface
+            ✔ should have registered the ERC725Y interface
+        when calling initialize more than once
+          ✔ should revert
+      when testing deployed contract
+        When testing ownership
+          When owner is transferring ownership
+            ✔ should pass and emit OwnershipTransferred event
+            ✔ should revert when transferring ownership to `address(0)`
+          When non-owner is transferring ownership
+            ✔ should revert
+          When owner is renouncing ownership
+            ✔ should pass and emit OwnershipTransferred event
+          When non-owner is renouncing ownership
+            ✔ should revert
+        When testing setting data
+          When sending value to setData
+            ✔ should revert when sending value to setData(..)
+            ✔ should revert when sending value to setDataBatch(..)
+          When using setData
+            When owner is setting data
+              ✔ should pass and emit DataChanged event
+            When non-owner is setting data
+              ✔ should revert
+            When interacting from a smart Contract
+              ✔ should pass and emit DataChanged event
+            When interacting from an EOA
+              when setting a new data Key
+                ✔ should pass and emit DataChanged event
+              when updating an existing data Key
+                ✔ should pass and emit DataChanged event
+              when removing an existing data Key
+                ✔ should pass and emit DataChanged event
+              when setting large bytes in the storage
+                ✔ should pass and emit DataChanged event
+          When using setDataBatch
+            ✔ should revert if all parameters are empty arrays [] []
+            ✔ should revert if at least one of the parameters is an empty array []
+            When owner is setting data
+              ✔ should pass and emit DataChanged event
+            When non-owner is setting data
+              ✔ should revert
+            When interacting from a smart Contract
+              ✔ should pass and emit DataChanged event
+            When interacting from an EOA
+              when setting a new data Key
+                ✔ should pass and emit DataChanged event
+              when updating an existing data Key
+                ✔ should pass and emit DataChanged event
+              when removing an existing data Key
+                ✔ should pass and emit DataChanged event
+              when setting large bytes in the storage
+                ✔ should pass and emit DataChanged event
+              when data keys length != data values length
+                ✔ should revert
+        When testing getting data
+          When using getData(bytes32)
+            When owner is setting data
+              ✔ should pass
+            When non-owner is setting data
+              ✔ should pass
+            When interacting from a smart Contract
+              ✔ should pass
+            When interacting from an EOA
+              When getting normal sizeData
+                ✔ should pass
+              When getting big sizeData
+                ✔ should pass
+          When using getDataBatch(bytes32[])
+            When owner is setting data
+              ✔ should pass
+            When non-owner is setting data
+              ✔ should pass
+            When interacting from a smart Contract
+              ✔ should pass
+            When interacting from an EOA
+              When getting normal sizeData
+                ✔ should pass
+              When getting big sizeData
+                ✔ should pass
+              When getting many entries
+                ✔ should pass
+
+·----------------------------------------------------------------------|----------------------------|-------------|-----------------------------·
+|                         [90mSolc version: 0.8.17[39m                         ·  [90mOptimizer enabled: false[39m  ·  [90mRuns: 200[39m  ·  [90mBlock limit: 30000000 gas[39m  │
+·······································································|····························|·············|······························
+|  [32m[1mMethods[22m[39m                                                                                                                                      │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [1mContract[22m    ·  [1mMethod[22m                                               ·  [32mMin[39m        ·  [32mMax[39m         ·  [32mAvg[39m        ·  [1m# calls[22m      ·  [1musd (avg)[22m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  execute(uint256,address,uint256,bytes)               ·      [36m34729[39m  ·      [31m127088[39m  ·      47296  ·          [90m114[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  executeBatch(uint256[],address[],uint256[],bytes[])  ·      [36m60552[39m  ·      [31m155455[39m  ·      92099  ·           [90m16[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  renounceOwnership()                                  ·      [36m31283[39m  ·       [31m31328[39m  ·      31306  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  setData(bytes32,bytes)                               ·      [36m32983[39m  ·     [31m8314086[39m  ·    1506448  ·           [90m17[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  setDataBatch(bytes32[],bytes[])                      ·      [36m35151[39m  ·     [31m8316271[39m  ·    1429416  ·           [90m18[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725[39m      ·  transferOwnership(address)                           ·      [36m32069[39m  ·       [31m32091[39m  ·      32084  ·            [90m6[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725Init[39m  ·  initialize(address)                                  ·      [36m51749[39m  ·       [31m51771[39m  ·      51749  ·          [90m124[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725X[39m     ·  execute(uint256,address,uint256,bytes)               ·      [36m31957[39m  ·      [31m124204[39m  ·      44514  ·          [90m114[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725X[39m     ·  executeBatch(uint256[],address[],uint256[],bytes[])  ·      [36m57690[39m  ·      [31m152526[39m  ·      89209  ·           [90m16[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725X[39m     ·  renounceOwnership()                                  ·          -  ·           -  ·      23661  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725X[39m     ·  transferOwnership(address)                           ·          -  ·           -  ·      29219  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725Y[39m     ·  renounceOwnership()                                  ·          -  ·           -  ·      23662  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725Y[39m     ·  setData(bytes32,bytes)                               ·      [36m30252[39m  ·     [31m8308944[39m  ·    1503287  ·           [90m17[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725Y[39m     ·  setDataBatch(bytes32[],bytes[])                      ·      [36m32396[39m  ·     [31m8311099[39m  ·    1426252  ·           [90m18[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [90mERC725Y[39m     ·  transferOwnership(address)                           ·          -  ·           -  ·      29197  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+···············|·······················································|·············|··············|·············|···············|··············
+|  [32m[1mDeployments[22m[39m                                                         ·                                          ·  [1m% of limit[22m   ·             │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725                                                              ·          -  ·           -  ·    2414518  ·          [90m8 %[39m  ·          [32m[90m-[32m[39m  │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725Init                                                          ·          -  ·           -  ·    2620902  ·        [90m8.7 %[39m  ·          [32m[90m-[32m[39m  │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725X                                                             ·          -  ·           -  ·    1852895  ·        [90m6.2 %[39m  ·          [32m[90m-[32m[39m  │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725XInit                                                         ·          -  ·           -  ·    2062672  ·        [90m6.9 %[39m  ·          [32m[90m-[32m[39m  │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725Y                                                             ·          -  ·           -  ·    1134143  ·        [90m3.8 %[39m  ·          [32m[90m-[32m[39m  │
+·······································································|·············|··············|·············|···············|··············
+|  ERC725YInit                                                         ·          -  ·           -  ·    1344141  ·        [90m4.5 %[39m  ·          [32m[90m-[32m[39m  │
+·----------------------------------------------------------------------|-------------|--------------|-------------|---------------|-------------·
+
+  259 passing (2m)
+
+Failed to generate 2 stack traces. Run Hardhat with --verbose to learn more.
+exit: 0

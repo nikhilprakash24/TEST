@@ -1,0 +1,44 @@
+=== XV canon-v1.3 repro :: step=05x_control_vendored_0824 ===
+UTC time : 2026-09-25T00:09:42Z
+command  : set -e; V=/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/soljson-v0.8.24+commit.e11b9ed9.js; cp node_modules/solc/soljson.js "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/soljson-0.8.37.bak"; cp "$V" node_modules/solc/soljson.js; echo 'swapped in vendored 0.8.24:'; sha256sum node_modules/solc/soljson.js; npx hardhat clean; npx hardhat compile; node "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/probe.js" | grep -E 'metadata compiler|CBOR|bytecode length'; IMPL=O1_ERC1056 npx hardhat run scenarios/run_i2i.js | tail -3; NEW=$(ls -t traces/i2i_O1_ERC1056_*.jsonl | head -1); echo "control trace: $NEW"; mv "$NEW" "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/control_0824_trace.jsonl"; node "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/cmp.js" traces/i2i_O1_ERC1056_1780620182135.jsonl "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/control_0824_trace.jsonl" | sed -n '/Per-function/,/blocking/p'; echo '--- restore 0.8.37 soljson + rebuild ---'; cp "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/soljson-0.8.37.bak" node_modules/solc/soljson.js; sha256sum node_modules/solc/soljson.js; npx hardhat clean; npx hardhat compile; node "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/probe.js" | grep -E 'metadata compiler|CBOR'; ls traces/
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+swapped in vendored 0.8.24:
+11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1 *node_modules/solc/soljson.js
+Compiled 12 Solidity files successfully (evm target: paris).
+solc metadata compiler.version (embedded by the compiler itself): 0.8.24+commit.e11b9ed9
+deployedBytecode CBOR solc version: 0.8.24
+[22] done: functions covered: 12/12
+
+Trace written: traces/i2i_O1_ERC1056_1790295020211.jsonl (22 entries, 12/12 functions)
+control trace: traces/i2i_O1_ERC1056_1790295020211.jsonl
+## Per-function aggregate (all 12 fnIds, tx gas where applicable)
+fnId | fn | kind | calls c/r | committed gas | reproduced gas | delta
+F1 | createDID | tx | 3/3 | 178935,161835,161823 | 178935,161835,161823 | 0,0,0
+F2 | resolveDID | view | 2/2 | (view) | (view) | n/a
+F3 | updateDID | tx | 1/1 | 44760 | 44760 | 0
+F4 | deactivateDID | tx | 1/1 | 55127 | 55127 | 0
+F5 | issueCredential | tx | 2/2 | 130163,130163 | 130163,130163 | 0,0
+F6 | verifyCredential | view | 3/3 | (view) | (view) | n/a
+F7 | revokeCredential | tx | 1/1 | 32980 | 32980 | 0
+F8 | createPresentation | tx | 1/1 | 62441 | 62446 | 5
+F9 | addVerificationMethod | tx | 2/2 | 59607,59607 | 59607,59607 | 0,0
+F10 | removeVerificationMethod | tx | 1/1 | 36478 | 36478 | 0
+F11 | addDelegate | tx | 1/1 | 54227 | 54227 | 0
+F12 | validDelegate | view | 1/1 | (view) | (view) | n/a
+
+function coverage: committed 12/12, reproduced 12/12
+total tx gas: committed 1168146, reproduced 1168151, delta 5; tx count 13
+blocking mismatches (excluding ts/txHash): 1
+--- restore 0.8.37 soljson + rebuild ---
+221d7a667378b5068d913e75fe092507e061363cd1d23b64c49ae82febabad4c *node_modules/solc/soljson.js
+Compiled 12 Solidity files successfully (evm target: paris).
+solc metadata compiler.version (embedded by the compiler itself): 0.8.37+commit.f401782d
+deployedBytecode CBOR solc version: 0.8.37
+SCHEMA.md
+i2i_O1_ERC1056_1780620182135.jsonl
+i2i_O1_ERC1056_1790294916643.jsonl
+exit: 0

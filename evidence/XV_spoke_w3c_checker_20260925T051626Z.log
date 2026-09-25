@@ -1,0 +1,11 @@
+UTC: 2026-09-25T05:16:26Z
+command: python --version; python3 --version; py --version
+cwd: /c/Users/nikhilp/Desktop
+node -v: v24.16.0
+npm -v: 11.13.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+/usr/bin/bash: line 1: py: command not found
+RESULT: not runnable: no Python (WindowsApps Store stub only; no py launcher)
+EXIT CODE: 9009/127 (stub)

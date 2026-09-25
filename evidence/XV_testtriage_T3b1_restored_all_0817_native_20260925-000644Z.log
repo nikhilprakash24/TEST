@@ -1,0 +1,16 @@
+=== XV test-triage :: step=T3b1_restored_all_0817_native ===
+LABEL    : PREVIEW - does not resolve [TS-1]; sanctioned run requires operator D2 (scratch restore, NON-GRADUATING)
+UTC time : 2026-09-25T00:06:44Z
+command  : "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.17+commit.8df45f5f.exe" --base-path . --include-path "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules" contracts/*.sol contracts/custom/*.sol contracts/interfaces/*.sol contracts/helpers/*.sol --bin --abi -o "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/out_0817" --overwrite; rc=$?; echo "solc rc=$rc"; echo '--- .bin artifacts emitted:'; ls "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/out_0817"/*.bin | wc -l; echo '--- non-empty .bin (deployable):'; find "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/out_0817" -name '*.bin' -size +0 | wc -l; exit $rc
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/restore/implementations
+compiler : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.17+commit.8df45f5f.exe
+--version: Version: 0.8.17+commit.8df45f5f.Windows.msvc
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+Compiler run successful. Artifact(s) can be found in directory "C:/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/out_0817".
+solc rc=0
+--- .bin artifacts emitted:
+40
+--- non-empty .bin (deployable):
+29
+exit: 0

@@ -1,0 +1,46 @@
+=== XV canon-v1.3 repro :: step=02d_actual_compiler_probe ===
+UTC time : 2026-09-25T00:07:17Z
+command  : node "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/probe.js"; echo '--- hardhat compiler cache after compile ---'; find "$LOCALAPPDATA/hardhat-nodejs/Cache" -type f -exec ls -la --time-style=full-iso {} \;; echo '--- O2 header sample (why 12 files but 5 artifacts) ---'; for f in contracts/implementations/O[2-8]*.sol; do echo "$f: $(wc -l < $f) lines, contract decls: $(grep -cE '^\s*(abstract )?contract ' $f)"; done
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+build-info file     : ..\..\..\build-info\3ab9145a284571cac5c489542045803e.json
+build-info solcVersion    : 0.8.24
+build-info solcLongVersion: solc-js 0.8.24 (local)
+solc metadata compiler.version (embedded by the compiler itself): 0.8.37+commit.f401782d
+metadata settings.evmVersion: paris  optimizer: {"enabled":true,"runs":200}
+deployedBytecode CBOR solc version: 0.8.37
+deployedBytecode length (bytes): 5392
+Contract artifacts emitted:
+   artifacts\contracts\implementations\O1_ERC1056.sol\O1_ERC1056.json
+   artifacts\contracts\interfaces\IMinimalSSI.sol\IMinimalSSI.json
+   artifacts\contracts\interfaces\ISetA.sol\ISetA.json
+   artifacts\contracts\interfaces\ISetB.sol\ISetB.json
+   artifacts\contracts\interfaces\ISetC.sol\ISetC.json
+Sources in compile input: 12
+   contracts/implementations/O1_ERC1056.sol
+   contracts/implementations/O2_ERC721.sol
+   contracts/implementations/O3_ERC725.sol
+   contracts/implementations/O4_ERC725xy.sol
+   contracts/implementations/O5_ERC1155.sol
+   contracts/implementations/O6_ERC4337.sol
+   contracts/implementations/O7_ERC8004.sol
+   contracts/implementations/O8_LFDT.sol
+   contracts/interfaces/IMinimalSSI.sol
+   contracts/interfaces/ISetA.sol
+   contracts/interfaces/ISetB.sol
+   contracts/interfaces/ISetC.sol
+--- hardhat compiler cache after compile ---
+-rw-r--r-- 1 nikhilp 197121 52435 2026-09-24 16:41:59.124313900 -0700 C:\Users\nikhilp\AppData\Local/hardhat-nodejs/Cache/compilers-v2/windows-amd64/list.json
+-rwxr-xr-x 1 nikhilp 197121 9398784 2026-09-24 16:41:59.641484200 -0700 C:\Users\nikhilp\AppData\Local/hardhat-nodejs/Cache/compilers-v2/windows-amd64/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe
+--- O2 header sample (why 12 files but 5 artifacts) ---
+contracts/implementations/O2_ERC721.sol: 11 lines, contract decls: 0
+contracts/implementations/O3_ERC725.sol: 11 lines, contract decls: 0
+contracts/implementations/O4_ERC725xy.sol: 11 lines, contract decls: 0
+contracts/implementations/O5_ERC1155.sol: 11 lines, contract decls: 0
+contracts/implementations/O6_ERC4337.sol: 11 lines, contract decls: 0
+contracts/implementations/O7_ERC8004.sol: 11 lines, contract decls: 0
+contracts/implementations/O8_LFDT.sol: 11 lines, contract decls: 0
+exit: 0

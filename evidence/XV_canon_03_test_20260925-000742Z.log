@@ -1,0 +1,28 @@
+=== XV canon-v1.3 repro :: step=03_test ===
+UTC time : 2026-09-25T00:07:42Z
+command  : npx hardhat test
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+
+
+  O1_ERC1056 — IMinimalSSI compliance
+    ✔ test_01 createDID returns non-zero id; DID resolvable (101ms)
+    ✔ test_02 resolveDID returns empty for non-existent DIDs (no revert) (85ms)
+    ✔ test_03 updateDID emits; unauthorized reverts NotAuthorized (144ms)
+    ✔ test_04 deactivateDID irreversible; updates revert DIDAlreadyDeactivated
+    ✔ test_05 issueCredential returns id; unauthorized issuer reverts (134ms)
+    ✔ test_06 verifyCredential valid=true for fresh credential, correct issuer (257ms)
+    ✔ test_07 revokeCredential -> verification returns revoked=true (102ms)
+    ✔ test_08 createPresentation prevents replay; verifies holder ownership (239ms)
+    ✔ test_09 addVerificationMethod returns non-zero keyId
+    ✔ test_10 removeVerificationMethod ok for non-last; fails for last key (100ms)
+    ✔ test_11 addDelegate -> validDelegate true (94ms)
+    ✔ test_12 validDelegate false after expiration (80ms)
+
+
+  12 passing (6s)
+
+exit: 0

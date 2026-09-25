@@ -1,0 +1,70 @@
+=== XV test-triage :: step=T1b_buildIII_flat_all_0817 ===
+LABEL    : AS-FOUND / read-only triage
+UTC time : 2026-09-24T23:38:37Z
+command  : "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.17+commit.8df45f5f.exe" --base-path . --include-path "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules" *.sol --bin
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts
+compiler : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.17+commit.8df45f5f.exe
+--version: Version: 0.8.17+commit.8df45f5f.Windows.msvc
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725.sol:5:1:
+  |
+5 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725InitAbstract.sol:8:1:
+  |
+8 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725X.sol:5:1:
+  |
+5 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "interfaces/IERC725X.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725XCore.sol:6:1:
+  |
+6 | import {IERC725X} from "./interfaces/IERC725X.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+  --> ERC725XCore.sol:15:1:
+   |
+15 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725XInitAbstract.sol:8:1:
+  |
+8 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725Y.sol:5:1:
+  |
+5 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "interfaces/IERC725Y.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725YCore.sol:6:1:
+  |
+6 | import {IERC725Y} from "./interfaces/IERC725Y.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+  --> ERC725YCore.sol:10:1:
+   |
+10 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Source "custom/OwnableUnset.sol" not found: File not found. Searched the following locations: "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/SmartContracts/.", "/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations/node_modules".
+ --> ERC725YInitAbstract.sol:8:1:
+  |
+8 | import {OwnableUnset} from "./custom/OwnableUnset.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+exit: 1

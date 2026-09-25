@@ -1,0 +1,99 @@
+=== XV hub cvin-sc :: step=08_interface_config_diff ===
+UTC time : 2026-09-25T05:20:08Z
+command  : echo '### hub search for IMinimalSSI/ISet*.sol:'; find . -path ./_bundle_checkout -prune -o \( -name 'IMinimalSSI*' -o -name 'ISet*.sol' \) -print; echo '(none found => diff not possible)'; echo; echo '### v1.3 canon interfaces (sha256):'; sha256sum /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/contracts/interfaces/*.sol; echo; echo '### v1.3 hardhat.config.js:'; cat /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/hardhat.config.js; echo; echo '### hub implementation/1_blockchain-identity/hardhat.config.js solidity block:'; sed -n '/solidity:/,/^  },/p' implementation/1_blockchain-identity/hardhat.config.js; echo '### hub implementation/cv2x-testbed/hardhat.config.js solidity block:'; sed -n '/solidity:/,/^  },/p' implementation/cv2x-testbed/hardhat.config.js; echo '### pragma census, 1_blockchain-identity/contracts:'; grep -rhoE 'pragma solidity [^;]+' implementation/1_blockchain-identity/contracts --include=*.sol | sort | uniq -c
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+### hub search for IMinimalSSI/ISet*.sol:
+(none found => diff not possible)
+
+### v1.3 canon interfaces (sha256):
+47defceb8e989979db9a9d4cffd52722e191f3725c83951ecde5392b72ea8397 */c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/contracts/interfaces/IMinimalSSI.sol
+af0c5e0a2ad57e194c261c0788ed2284279ac156cc9c0c95692724294bf4ac9d */c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/contracts/interfaces/ISetA.sol
+6bc50c951e230775985f6302672f4a0eaec4434c0a8cafb0cce60e54c3598dc3 */c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/contracts/interfaces/ISetB.sol
+cce8bb07f0ea021bf2fd34387232df0f85803bf7ddaa2be910deae557fa0f422 */c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/parallel-work/cvin-sandbox-v1.3/cvin-sandbox/contracts/interfaces/ISetC.sol
+
+### v1.3 hardhat.config.js:
+require("@nomicfoundation/hardhat-toolbox");
+const path = require("path");
+const { subtask } = require("hardhat/config");
+const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names");
+
+// Offline/sandboxed compilation: use the npm-installed solc-js instead of
+// downloading binaries from binaries.soliditylang.org (blocked in restricted nets).
+subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
+  if (args.solcVersion === "0.8.24") {
+    return {
+      compilerPath: path.join(__dirname, "node_modules", "solc", "soljson.js"),
+      isSolcJs: true,
+      version: "0.8.24",
+      longVersion: "solc-js 0.8.24 (local)",
+    };
+  }
+  return runSuper(args);
+});
+
+module.exports = {
+  solidity: { version: "0.8.24", settings: { optimizer: { enabled: true, runs: 200 } } },
+};
+
+### hub implementation/1_blockchain-identity/hardhat.config.js solidity block:
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.24",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          viaIR: true,
+        },
+      },
+      {
+        version: "0.8.19",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.8.0",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.7.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
+### hub implementation/cv2x-testbed/hardhat.config.js solidity block:
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
+### pragma census, 1_blockchain-identity/contracts:
+      3 pragma solidity ^0.8.0
+      6 pragma solidity ^0.8.20
+      5 pragma solidity ^0.8.24
+=== exit code: 0 ===

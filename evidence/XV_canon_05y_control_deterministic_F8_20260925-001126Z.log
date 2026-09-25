@@ -1,0 +1,51 @@
+=== XV canon-v1.3 repro :: step=05y_control_deterministic_F8 ===
+UTC time : 2026-09-25T00:11:26Z
+command  : bash "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/f8.sh"
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+Compiled 12 Solidity files successfully (evm target: paris).
+solc metadata compiler.version (embedded by the compiler itself): 0.8.37+commit.f401782d
+solc0837 run1:
+createDID=178935 createDID=161835 createDID=161823 issueCredential=130163 issueCredential=130163 addVerificationMethod=59607 addVerificationMethod=59607 addDelegate=54227 createPresentation=62441 revokeCredential=32980 removeVerificationMethod=36478 updateDID=44760 deactivateDID=55127 
+solc0837 run2:
+createDID=178935 createDID=161835 createDID=161823 issueCredential=130163 issueCredential=130163 addVerificationMethod=59607 addVerificationMethod=59607 addDelegate=54227 createPresentation=62441 revokeCredential=32980 removeVerificationMethod=36478 updateDID=44760 deactivateDID=55127 
+11b054b55273ec55f6ab3f445eb0eb2c83a23fed43d10079d34ac3eabe6ed8b1 *node_modules/solc/soljson.js
+Compiled 12 Solidity files successfully (evm target: paris).
+solc metadata compiler.version (embedded by the compiler itself): 0.8.24+commit.e11b9ed9
+solc0824 run1:
+createDID=178935 createDID=161835 createDID=161823 issueCredential=130163 issueCredential=130163 addVerificationMethod=59607 addVerificationMethod=59607 addDelegate=54227 createPresentation=62458 revokeCredential=32980 removeVerificationMethod=36478 updateDID=44760 deactivateDID=55127 
+solc0824 run2:
+createDID=178935 createDID=161835 createDID=161823 issueCredential=130163 issueCredential=130163 addVerificationMethod=59607 addVerificationMethod=59607 addDelegate=54227 createPresentation=62458 revokeCredential=32980 removeVerificationMethod=36478 updateDID=44760 deactivateDID=55127 
+restored
+221d7a667378b5068d913e75fe092507e061363cd1d23b64c49ae82febabad4c *node_modules/solc/soljson.js
+Compiled 12 Solidity files successfully (evm target: paris).
+solc metadata compiler.version (embedded by the compiler itself): 0.8.37+commit.f401782d
+--- deterministic cross-compiler compare (0.8.37 run1 vs 0.8.24 run1) ---
+## Per-transaction comparison (kind=tx)
+seq | fn | fnId | identity | committed gas | reproduced gas | delta | events c/r | txHash equal
+2 | createDID | F1 | Registry | 178935 | 178935 | 0 | 1/1 | false
+3 | createDID | F1 | IdentityA | 161835 | 161835 | 0 | 1/1 | false
+4 | createDID | F1 | IdentityB | 161823 | 161823 | 0 | 1/1 | false
+5 | issueCredential | F5 | Registry | 130163 | 130163 | 0 | 1/1 | false
+6 | issueCredential | F5 | Registry | 130163 | 130163 | 0 | 1/1 | false
+7 | addVerificationMethod | F9 | IdentityA | 59607 | 59607 | 0 | 1/1 | false
+8 | addVerificationMethod | F9 | IdentityA | 59607 | 59607 | 0 | 1/1 | false
+9 | addDelegate | F11 | IdentityA | 54227 | 54227 | 0 | 1/1 | false
+  field diff seq 15 note: "gas=62441" vs "gas=62458"
+15 | createPresentation | F8 | IdentityA | 62441 | 62458 | 17 | 1/1 | false
+17 | revokeCredential | F7 | Registry | 32980 | 32980 | 0 | 1/1 | false
+19 | removeVerificationMethod | F10 | IdentityA | 36478 | 36478 | 0 | 1/1 | false
+20 | updateDID | F3 | IdentityB | 44760 | 44760 | 0 | 2/2 | false
+21 | deactivateDID | F4 | IdentityA | 55127 | 55127 | 0 | 1/1 | false
+--- same-compiler determinism (0.8.37 run1 vs run2) ---
+total tx gas: committed 1168146, reproduced 1168146, delta 0; tx count 13
+blocking mismatches (excluding ts/txHash): 0
+--- challenge zero bytes under stub ---
+stub nonce = ab*8 (no zero bytes in nonce; challenge is keccak of JSON incl. DIDs)
+SCHEMA.md
+i2i_O1_ERC1056_1780620182135.jsonl
+i2i_O1_ERC1056_1790294916643.jsonl
+exit: 0

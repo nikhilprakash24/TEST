@@ -1,0 +1,32 @@
+=== XV test-triage :: step=T3a2_restored_sha256_crlf_vs_blob ===
+LABEL    : PREVIEW - does not resolve [TS-1]; sanctioned run requires operator D2
+UTC time : 2026-09-25T00:06:12Z
+command  : echo 'core.autocrlf (system gitconfig) = '$(git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/upstream/ERC725" config core.autocrlf)'; git archive applied LF->CRLF; TEST working-tree .sol files are also CRLF (13/13 byte MATCH in T3a)'; printf '%-64s  %-64s  %s\n' SHA256_AS_RESTORED_CRLF SHA256_RAW_GIT_BLOB_LF PATH; for f in $(cd restore && find implementations/contracts/custom implementations/contracts/interfaces implementations/contracts/helpers -type f | sort); do a=$(sha256sum restore/$f | cut -c1-64); b=$(git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/upstream/ERC725" cat-file blob 3b1b4935db8c8576647bd064bf9c9c2f8724721e:$f | sha256sum | cut -c1-64); printf '%s  %s  %s\n' $a $b $f; done
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+core.autocrlf (system gitconfig) = true; git archive applied LF->CRLF; TEST working-tree .sol files are also CRLF (13/13 byte MATCH in T3a)
+SHA256_AS_RESTORED_CRLF                                           SHA256_RAW_GIT_BLOB_LF                                            PATH
+50e07a79ff651dab32750d69ca0dea643552e9cd8ca760ee37ff5145a1279a17  00b49cfa1f4e555651e6193422d6c460aca310e47b563fe0d5470b8477bccfdd  implementations/contracts/custom/OwnableUnset.sol
+dcbe922ca5d702a5e2d8df336800a5dc5da0d4eff0b86fb646b394ba13c1ced9  6124291ad447b554b6b8d06235b762b89913f153b5fcb079609b752309f22970  implementations/contracts/helpers/ConstantsChecker.sol
+3b411ab9e2bc8ed513c8738d771938a37f6b2db960b07755e864433c98c19177  88eed2f8ce41ac097d5a3b107d91b7604d3470d6a6e80df8cba760468e7646eb  implementations/contracts/helpers/Contract.sol
+c75ec92e4badd6c9ffea0e0359c6f54760ee28fb5f48c24a5bc3b6e5a33d451f  4ac82f01f3539b8ff472a1918be7030f810c0ec225287c76d457351782f5daad  implementations/contracts/helpers/Counter.sol
+f059acfaf4dc2c974a2d749ee4c1ed636a0e48ca052f472704305ccb1eeb37ca  ab8004645e06dd4ea046c1ed9c71f4bac83347b81902b9508abcd7d091403e38  implementations/contracts/helpers/CustomRevertTest.sol
+54607de481fe0e3caaf19c7d45f1edf79af1bd208f9e96059cdf427112541c45  51c4231a6269fda7b3a83af733f36685203632e07373a5666dfe7ed5fd2af8b2  implementations/contracts/helpers/DelegateTest.sol
+cd7ba00757feb206a47fe0a4a53eced64b3295c95024c59fbad1e689eacd2cf6  9eb1accb9fd49492b048e64c2f101a2f3ef4aeb725b0bd2b64a20b1fa7e4bfb7  implementations/contracts/helpers/ERC725XPayableTester.sol
+b743ce549de0099271c4ecf476cbbb1acd0bda59c901c9b0c689d4890b2ca59e  53812dcab076fa1eadfa61695a5bbcb15da0145618d43e72ad06f1e4c1ffb944  implementations/contracts/helpers/ERC725YReader.sol
+cd170adbbb3f8ad631ebe4914679edc883d4c23ef6fa1e6b898ad1dd28fff208  e1f18627f3147fbe037ea9790851a9c0513440d7ae8c7315df2aca4a232d6e37  implementations/contracts/helpers/ERC725YWriter.sol
+55a56fd323b0f8c8e9b9ab84cbf480043285326b082fb297f032526bc4eee531  c61220abde4459f6a8673788dd24f178e718d75dc28366597df0743dc7689295  implementations/contracts/helpers/NoReceive.sol
+57dfd1d5b966ebd738b308dd96f64acbdb69c727bc551a8088ce1cd60437e73b  70e8dfba83a009ce57b1deebd21dc9952b22961494524860a0198eb4c7526acf  implementations/contracts/helpers/NonPayableFallbackContract.sol
+2d9ee85eeb65468ea6e461f159d6f4f353ec73671fae0666c10b64e704e18237  1ac1ab2bd686257ac1e890ac56b37072fd2768b08e229710cc33e40be8e2120e  implementations/contracts/helpers/PayableFallbackContract.sol
+c09916166093e453360484d3f43fa7133af097a9f2d03bef6ce04128d707ad3f  a859ad674b7a912bee8fc31d050c6c8b1a725b80a1d220327cee6b8d9a3e4922  implementations/contracts/helpers/Reader.sol
+26cd31e2a6516a15852563f2f397fd4dcc795fa17ef0df3d8945175b2c245d77  aa3a6e799c10c985743b4b1640722ecc6fc70612363f2e68c016c53653dec056  implementations/contracts/helpers/ReceiveTester.sol
+f1ac389d61be357baf0c27be0401d71073c88a0be1a2632f82918c884a11778e  cb1fc05e07f3838ed79a001ec6a4403b30b6fd12f503d95fb4ac0d44f4f6e157  implementations/contracts/helpers/Return.sol
+25f37111710d4e93463fe575b12425272272898d5cdf52d524f36a5591626b64  460f7bcb7f1b744d6b9fb1860516aba16136bed316d0f0da243d1192a0ac89e5  implementations/contracts/helpers/WithConstructorPayable.sol
+c7bc1e51e742ff13dbc15ee4dbf69f9b062e7f057c6bf613582c33f8d23f8501  ad7221a598c7015c17de24bcb6368b201810bcb241c10c35ceee4e895fdbb768  implementations/contracts/helpers/WithConstructorWithArgs.sol
+33165d8ea5782699026932be6a8b7e99b10c84b1de56ba9238ae2706e59ea672  83d90e317bc037e92a4c63a9a03fa5cb8e6adc951cccf25b996d40ffca2969cf  implementations/contracts/helpers/WithConstructorWithoutArgs.sol
+8576219d533826ba408f3f9ca46ea0bc59f48657a0f94732b01e3c09d2e008a2  d1e4a8da541fece1f742dbfbb4eb9f0f7d1a2faad69346d22844baafa9651aa4  implementations/contracts/helpers/WithoutConstructor.sol
+2bc2c9ec43e2c831ef38f963c0832ff0922d4e7e688b0ddec52878d682e2114e  2277b6b4599b3326cbba27c1a2fe50bd72981e7601e478f9b9824a3c7b04fad5  implementations/contracts/helpers/selfdestruct.sol
+5a5a88b39c27c9c12ff805bd3bf7c94824659cbd40ca367b46b93cd16560d935  deafabaa42157ecac2992706eda23832b3077a4fac4c73b43fd12715aeb2e915  implementations/contracts/interfaces/IERC725X.sol
+f4e3981b112750f55b149039735f3810c4417ced8181e0f4f5556c60735238e9  67614fa31cb1fff6325106f9e5dcacd889a909960c4b7bed4e1d24b885da47c0  implementations/contracts/interfaces/IERC725Y.sol
+exit: 0

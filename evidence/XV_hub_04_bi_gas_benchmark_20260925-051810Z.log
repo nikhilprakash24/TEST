@@ -1,0 +1,56 @@
+=== XV hub cvin-sc :: step=04_bi_gas_benchmark ===
+UTC time : 2026-09-25T05:18:10Z
+command  : node -e "console.log(\"hardhat \"+require(\"hardhat/package.json\").version+\" | ethers \"+require(\"ethers/package.json\").version)"; npx hardhat run scripts/benchmark_gas.js
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc/implementation/1_blockchain-identity
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+node:internal/modules/cjs/loader:597
+      throw e;
+      ^
+
+Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './package.json' is not defined by "exports" in C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\hub-cvin-sc\implementation\1_blockchain-identity\node_modules\ethers\package.json
+    at new NodeError (node:internal/errors:405:5)
+    at exportsNotFound (node:internal/modules/esm/resolve:366:10)
+    at packageExportsResolve (node:internal/modules/esm/resolve:713:9)
+    at resolveExports (node:internal/modules/cjs/loader:590:36)
+    at Module._findPath (node:internal/modules/cjs/loader:664:31)
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1126:27)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at [eval]:1:77 {
+  code: 'ERR_PACKAGE_PATH_NOT_EXPORTED'
+}
+
+Node.js v18.20.4
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+CVIN vehicle-identity gas benchmark
+Network: hardhat (chainId 31337)
+
+Benchmarking ERC-1056 (EthereumDIDRegistry)...
+Benchmarking ERC-721 (CVINVehicleNFT)...
+Benchmarking ERC-725 (CVIN_SCBasedAccOrID_DID_ERC725Basic)...
+Benchmarking ERC-735 (CVINVehicleClaimHolder)...
+Benchmarking ERC-1155 (CVINVehicleCredential1155)...
+Benchmarking ERC-4337 (CVINVehicleAccount + CVINMinimalEntryPoint)...
+Benchmarking LSP8 (CVINVehicleLSP8)...
+Benchmarking MOBI-VID-V2 (MOBIVIDRegistryV2)...
+Benchmarking CVIN-Combined (CVINCombinedIdentity)...
+
+=== Gas benchmark summary (gasUsed) ===
+operation	ERC-1056	ERC-721	ERC-725	ERC-735	ERC-1155	ERC-4337	LSP8	MOBI-VID-V2	CVIN-Combined
+deployRegistry	979720	2778046	n/a	n/a	2314487	460882	1631155	3907814	1363520
+createIdentity	52612	542429	528647	1404108	103905	768204	149352	298923	52178
+updateAttribute	35512	119753	137107	75151	49156	49366	55065	306923	35078
+updateAttributeVia4337	n/a	n/a	n/a	n/a	n/a	96228	n/a	n/a	n/a
+addDelegateOrClaim	54853	48306	120007	290249	57126	47560	n/a	35286	289923
+revoke	35065	27685	43410	72100	30641	25432	41877	74844	73727
+transferOwnership	51764	174707	28397	28704	83641	28561	80526	200018	51734
+
+Results written to C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\hub-cvin-sc\implementation\4_comparison-framework\results\gas_benchmark.json
+=== exit code: 0 ===

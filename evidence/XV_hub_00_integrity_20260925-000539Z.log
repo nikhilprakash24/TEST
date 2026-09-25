@@ -1,0 +1,30 @@
+=== XV hub cvin-sc :: step=00_integrity ===
+UTC time : 2026-09-25T00:05:39Z
+command  : git bundle list-heads cvin-sc.bundle; git -C _bundle_checkout log --oneline --decorate; echo "--- diff -rq bundle HEAD checkout (autocrlf=false) vs staging tree:"; diff -rq --exclude=.git --exclude=_bundle_checkout --exclude=cvin-sc.bundle _bundle_checkout . && echo "IDENTICAL (byte-exact)"; echo "--- cvin-sc-0 vs cvin-sc-1:"; diff -rq /c/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 /c/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-1 && echo IDENTICAL; echo "--- sha256sum -c SHA256SUMS:"; sha256sum -c SHA256SUMS 2>&1 | grep -v ": OK$"; echo "OK lines: $(sha256sum -c SHA256SUMS 2>/dev/null | grep -c ": OK$") of $(wc -l < SHA256SUMS)"; echo "--- lockfiles:"; ls implementation/1_blockchain-identity/package-lock.json implementation/cv2x-testbed/package-lock.json 2>&1; echo "--- IMinimalSSI search:"; find . -path ./_bundle_checkout -prune -o \( -name "IMinimalSSI*" -o -name "ISet*.sol" -o -name "*.jsonl" \) -print; echo "(end search)"
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+2de795cda336c585a838993dd8dfee3ffd95806b refs/heads/main
+a70c7579a62043c440768da0c29f52379286904a refs/tags/audit-baseline-2026-09
+427ae41d20a0aa431a2b25f78ff42d494b5909b9 refs/tags/lineageB-verified-2026-09-16
+cfcc086caf58c9242390fb7a4144cedab0f571d7 refs/tags/push-ready-2026-09-23
+2de795cda336c585a838993dd8dfee3ffd95806b HEAD
+2de795c (HEAD -> main, tag: push-ready-2026-09-23, origin/main, origin/HEAD) Set canonical remote nikhilprakash-cvin2/cvin-sc; add VERSIONING, SISTER_REPOS, VERSION 0.8.0, Claude Code handoff v1.0
+427ae41 (tag: lineageB-verified-2026-09-16) Verify Lineage B by rerun (201/63-identical/28/21), add WO-R reconciliation map v0.1, log dependency defects, update STATUS/BUILD_PLAN/historical
+bcee5ce Add SHA256 manifest
+a70c757 (tag: audit-baseline-2026-09) Initialise cvin-sc monorepo: import v0.7.0 implementation (be32c6e), file 58-doc corpus, reserve sandbox slot, constitution + build plan + status
+--- diff -rq bundle HEAD checkout (autocrlf=false) vs staging tree:
+IDENTICAL (byte-exact)
+--- cvin-sc-0 vs cvin-sc-1:
+IDENTICAL
+--- sha256sum -c SHA256SUMS:
+OK lines: 241 of 241
+--- lockfiles:
+ls: cannot access 'implementation/1_blockchain-identity/package-lock.json': No such file or directory
+implementation/cv2x-testbed/package-lock.json
+--- IMinimalSSI search:
+(end search)
+=== exit code: 0 ===

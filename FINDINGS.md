@@ -107,3 +107,20 @@ Executed per `docs/NEXT_STEPS_PLAN_v1.0.md` P1; scope = the 2-of-5 install set (
 - Sandbox `package.json` has no runnable scripts (`npm test` = exit-1 stub); commands are `npx …`; the documented `IMPL=<Name> npx hardhat run …` env-prefix form needs `$env:IMPL='…'` on PowerShell.
 
 **Fold-in map (TEST → canon):** Build-III operator bring-up → the first **operator-executed G0** on record; a fresh `IMPL=O1_ERC1056` S1 run on this machine → **G1** (compare against the 2026-06-05 trace; expect and re-log the known createDID 162–179K vs <100K deviation); Build-II Origin/ERC-735 claims → **T-735 / G4** material under WO-1a/1b; TEST inventory/plan docs → enter canon only via **WO-0** ingest (documentary evidence; may never resolve empirical tokens).
+
+---
+
+## H. Cross-verification pass (2026-09-25, Opus 5.5 team) — see docs/CROSS_VERIFICATION_TEST_REPORT_v1.0.md
+
+**Reproduced (agent-executed, not operator gates):** canon v1.3 O1 12/12 + S1 13/13 tx gas Δ0 (total 1,168,146); hub Lineage B 201/201, gas 63/63, security 43/43 (bundle 241/241 SHA OK); spoke 47/47 + all gas figures; TEST Build-III restore **preview** 259/259 offline @ Node 16 (does NOT resolve [TS-1]; needs D2).
+
+**New findings:**
+- **F-XV-1 (compiler truth, HIGH):** canon `"solc": "^0.8.24"` without lockfile resolves to solc **0.8.37**; the subtask override labels it "0.8.24" in build-info. True 0.8.24 (vendored e11b9ed9) gives createPresentation **62,458** vs committed **62,441** (+17); other 12 tx identical. Corpus "0.8.24" gas figures are newer-compiler figures. Fix: exact pin + lockfile + soljson hash check; re-baseline.
+- **F-XV-2 (CI, MED):** hub & spoke CI cannot pass as written (`npm ci` without lockfile; spoke matrix glob matches no files; hub label "147" vs 201).
+- **F-XV-3 (Build-0/II, LOW):** no 0.4.x compiler vendored; native compile impossible offline (needs solc 0.4.24+commit.e67f0147, openzeppelin-solidity ^1.10).
+- **F-XV-4 (CRLF, LOW):** `core.autocrlf=true` + no `.gitattributes` shifts deploy gas by 12 (metadata byte) and breaks hub bundle SHA256SUMS on checkout.
+- **H3 PROVEN** offline at 0.8.17 and 0.8.24: exactly 3 missing local sources (10 errors); 13/13 present files byte-match upstream `3b1b4935`.
+- **[TS-2]/[TS-3] "compiles unmodified @0.8.24" column:** FAIL for all Build-0/II/III files except `constants.sol`, `errors.sol`.
+- **Collision (P0 per hub rules):** 2026-09-24 onboarding pushes copied TEST history (key at `cvin-v6/index.js:19`, public since 2023-11) into the public SSI-DID spoke (branches `sandbox-onboarding`, `wo-s0/*`, `docs/root-readme`, tag `asfound/pre-onboarding`). Awaiting operator ruling U3; no further spoke pushes.
+- **Hub WO-0:** `cvin-sandbox-v1.3` matches the hub's missing-sandbox fingerprint and acceptance numbers → recommend declaring it the recovery (U5).
+- **B↔C:** spoke contracts don't implement IMinimalSSI (ERC-1056: F3/F11/F12 native; F1/F2/F9/F10 adapted; F4 convention; F5–F8 absent) → adapter required (A7).

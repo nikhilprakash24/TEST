@@ -1,0 +1,66 @@
+=== XV test-triage :: step=T2c_buildII_perfile_0824 ===
+LABEL    : AS-FOUND / read-only triage
+UTC time : 2026-09-24T23:39:27Z
+command  : "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/perfile.sh" "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe" - '' contracts/*.sol
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-II-AlternateImplementation/erc725-master
+compiler : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe
+--version: Version: 0.8.24+commit.e11b9ed9.Windows.msvc
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+################ FILE: contracts/ClaimHolder.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/ClaimHolder.sol:1:1:
+  |
+1 | pragma solidity ^0.4.22;
+  | ^^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/ClaimHolder.sol rc=1
+################ FILE: contracts/ClaimVerifier.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/ClaimVerifier.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/ClaimVerifier.sol rc=1
+################ FILE: contracts/ERC725.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/ERC725.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/ERC725.sol rc=1
+################ FILE: contracts/ERC735.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/ERC735.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/ERC735.sol rc=1
+################ FILE: contracts/KeyHolder.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/KeyHolder.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/KeyHolder.sol rc=1
+################ FILE: contracts/VeryGoodCoin.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/VeryGoodCoin.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/VeryGoodCoin.sol rc=1
+################ FILE: contracts/VeryGoodCrowdsale.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> contracts/VeryGoodCrowdsale.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: contracts/VeryGoodCrowdsale.sol rc=1
+exit: 0
