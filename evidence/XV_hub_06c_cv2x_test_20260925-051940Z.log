@@ -1,0 +1,18 @@
+=== XV hub cvin-sc :: step=06c_cv2x_test ===
+UTC time : 2026-09-25T05:19:40Z
+command  : ls test 2>&1; npx hardhat test
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc/implementation/cv2x-testbed
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+ls: cannot access 'test': No such file or directory
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+
+
+  0 passing (1ms)
+
+=== exit code: 0 ===

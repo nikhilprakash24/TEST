@@ -1,0 +1,104 @@
+=== XV spoke evidence log ===
+UTC:      2026-09-24T23:41:53Z
+step:     compile_node18
+command:  npx hardhat compile
+cwd:      /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/spoke-ssi-did/1_blockchain-identity
+node -v:  v18.20.4  (/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node)
+npm -v:   10.7.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c (claude/clone-cvin-id-scs-011CUyxScetMdSQFkuQUNLTt)
+==============================
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+Downloading compiler 0.8.24
+[1m[33mWarning:[39m[22m This declaration shadows an existing declaration.
+  --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:38:17:
+   |
+38 |     constructor(string memory name, string memory symbol, address royaltyReceiver, uint96 royaltyFeeNumerator)
+   |                 ^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:50:5:
+   |
+50 |     function name() public view returns (string memory) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+[1m[33mWarning:[39m[22m This declaration shadows an existing declaration.
+  --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:38:37:
+   |
+38 |     constructor(string memory name, string memory symbol, address royaltyReceiver, uint96 royaltyFeeNumerator)
+   |                                     ^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:54:5:
+   |
+54 |     function symbol() public view returns (string memory) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:141:9:
+    |
+141 |         string memory make,
+    |         ^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:142:9:
+    |
+142 |         string memory model,
+    |         ^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:143:9:
+    |
+143 |         uint16 year,
+    |         ^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:144:9:
+    |
+144 |         string memory color,
+    |         ^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:145:9:
+    |
+145 |         string memory engineNumber,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:146:9:
+    |
+146 |         uint256 manufacturingDate,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> contracts/ERC1056/CVINVehicleDIDRegistry.sol:147:9:
+    |
+147 |         string memory autonomyLevel
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+[1m[33mWarning:[39m[22m Function state mutability can be restricted to pure
+  --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:69:5:
+   |
+69 |     function _baseURI() internal view returns (string memory) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+[1m[33mWarning:[39m[22m Function state mutability can be restricted to pure
+   --> contracts/ERC721/CVIN_NFT_DID_ERC721_Monolithic.sol:244:5:
+    |
+244 |     function supportsInterface(bytes4 interfaceId) public view override(IERC165) returns (bool) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Compiled 32 Solidity files successfully (evm target: cancun).
+==============================
+EXIT CODE: 0
+END UTC:   2026-09-24T23:42:20Z

@@ -1,0 +1,47 @@
+=== XV spoke evidence log ===
+UTC:      2026-09-25T00:06:12Z
+step:     ci_matrix_ERC721_node18
+command:  npx hardhat test test/ERC721*.js
+cwd:      /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/spoke-ssi-did/1_blockchain-identity
+node -v:  v18.20.4  (/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node)
+npm -v:   10.7.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c (claude/clone-cvin-id-scs-011CUyxScetMdSQFkuQUNLTt)
+==============================
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+[31mAn unexpected error occurred:[39m
+
+Error: Cannot find module 'C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\test\ERC721*.js'
+Require stack:
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\mocha\lib\mocha.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\mocha\index.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\builtin-tasks\test.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\internal\core\tasks\builtin-tasks.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\internal\core\config\config-loading.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\internal\cli\cli.js
+- C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\internal\cli\bootstrap.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\mocha\lib\mocha.js:396:36
+    at Array.forEach (<anonymous>)
+    at Mocha.loadFiles (C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\mocha\lib\mocha.js:393:14)
+    at Mocha.run (C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\mocha\lib\mocha.js:974:10)
+    at testFailures (C:\Users\nikhilp\Desktop\CVIN-2026-Sanbox1_v6\toolchain\runs\spoke-ssi-did\1_blockchain-identity\node_modules\hardhat\src\builtin-tasks\test.ts:136:15)
+    at new Promise (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\mocha\\lib\\mocha.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\mocha\\index.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\hardhat\\builtin-tasks\\test.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\hardhat\\internal\\core\\tasks\\builtin-tasks.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\hardhat\\internal\\core\\config\\config-loading.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\hardhat\\internal\\cli\\cli.js',
+    'C:\\Users\\nikhilp\\Desktop\\CVIN-2026-Sanbox1_v6\\toolchain\\runs\\spoke-ssi-did\\1_blockchain-identity\\node_modules\\hardhat\\internal\\cli\\bootstrap.js'
+  ]
+}
+==============================
+EXIT CODE: 1
+END UTC:   2026-09-25T00:06:24Z

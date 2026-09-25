@@ -1,0 +1,15 @@
+=== XV hub cvin-sc :: step=07_python_suites_blocked ===
+UTC time : 2026-09-25T05:20:07Z
+command  : echo "which python:"; which -a python python3; python --version; echo "Python suites (2_w3c-ssi-layer VC 28, mobi-vid 21, use cases 12, w3c_compliance_checker 93.2%, generate_tables.py, SUMO p95) NOT RUN: no real Python interpreter on host (WindowsApps store stub only); installing one is out of brief scope (no global installs / untrusted executables)."; exit 2
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+which python:
+/c/Users/nikhilp/AppData/Local/Microsoft/WindowsApps/python
+/c/Users/nikhilp/AppData/Local/Microsoft/WindowsApps/python3
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python suites (2_w3c-ssi-layer VC 28, mobi-vid 21, use cases 12, w3c_compliance_checker 93.2%, generate_tables.py, SUMO p95) NOT RUN: no real Python interpreter on host (WindowsApps store stub only); installing one is out of brief scope (no global installs / untrusted executables).
+=== exit code: 2 ===

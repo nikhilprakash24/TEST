@@ -1,0 +1,37 @@
+=== XV spoke evidence log ===
+UTC:      2026-09-24T23:38:20Z
+step:     npmci_node18
+command:  npm ci
+cwd:      /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/spoke-ssi-did/1_blockchain-identity
+node -v:  v18.20.4  (/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node)
+npm -v:   10.7.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c (claude/clone-cvin-id-scs-011CUyxScetMdSQFkuQUNLTt)
+==============================
+npm error code EUSAGE
+npm error
+npm error The `npm ci` command can only install with an existing package-lock.json or
+npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+npm error later to generate a package-lock.json file, then try again.
+npm error
+npm error Clean install a project
+npm error
+npm error Usage:
+npm error npm ci
+npm error
+npm error Options:
+npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+npm error [--no-bin-links] [--no-fund] [--dry-run]
+npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+npm error
+npm error aliases: clean-install, ic, install-clean, isntall-clean
+npm error
+npm error Run "npm help ci" for more info
+
+npm error A complete log of this run can be found in: C:\Users\nikhilp\AppData\Local\npm-cache\_logs\2026-09-24T23_38_40_657Z-debug-0.log
+==============================
+EXIT CODE: 1
+END UTC:   2026-09-24T23:38:42Z

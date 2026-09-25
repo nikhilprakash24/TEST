@@ -1,0 +1,20 @@
+=== XV canon-v1.3 repro :: step=02a_compiler_cache_before ===
+UTC time : 2026-09-25T00:06:09Z
+command  : for d in "$LOCALAPPDATA/hardhat-nodejs" "$APPDATA/hardhat-nodejs" "$HOME/.cache/hardhat-nodejs"; do echo "## $d"; if [ -d "$d" ]; then find "$d" -type f -exec ls -la {} \; 2>/dev/null | head -50; else echo "(absent)"; fi; done; echo "## artifacts/cache in RUN dir:"; ls -d artifacts cache 2>&1
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+## C:\Users\nikhilp\AppData\Local/hardhat-nodejs
+-rw-r--r-- 1 nikhilp 197121 52435 Sep 24 16:41 C:\Users\nikhilp\AppData\Local/hardhat-nodejs/Cache/compilers-v2/windows-amd64/list.json
+-rwxr-xr-x 1 nikhilp 197121 9398784 Sep 24 16:41 C:\Users\nikhilp\AppData\Local/hardhat-nodejs/Cache/compilers-v2/windows-amd64/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe
+-rw-r--r-- 1 nikhilp 197121 80 Sep  3 20:28 C:\Users\nikhilp\AppData\Local/hardhat-nodejs/Data/analytics.json
+## C:\Users\nikhilp\AppData\Roaming/hardhat-nodejs
+-rw-r--r-- 1 nikhilp 197121 43 Sep  3 20:28 C:\Users\nikhilp\AppData\Roaming/hardhat-nodejs/Config/vars.json
+## /c/Users/nikhilp/.cache/hardhat-nodejs
+(absent)
+## artifacts/cache in RUN dir:
+ls: cannot access 'artifacts': No such file or directory
+ls: cannot access 'cache': No such file or directory
+exit: 2

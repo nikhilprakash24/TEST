@@ -1,0 +1,59 @@
+=== XV canon-v1.3 repro :: step=04b_S1_gas_compare ===
+UTC time : 2026-09-25T00:09:10Z
+command  : node "/c/Users/nikhilp/AppData/Local/Temp/claude/C--Users-nikhilp-Desktop/4c145d73-58c1-4217-919e-d748f4224fd2/scratchpad/cmp.js" traces/i2i_O1_ERC1056_1780620182135.jsonl traces/i2i_O1_ERC1056_1790294916643.jsonl; RC=$?; echo '--- sha256 of traces ---'; sha256sum traces/*.jsonl; echo '--- byte diff (committed vs reproduced), ts fields masked ---'; diff <(sed -E 's/"ts":[0-9]+/"ts":X/' traces/i2i_O1_ERC1056_1780620182135.jsonl) <(sed -E 's/"ts":[0-9]+/"ts":X/' traces/i2i_O1_ERC1056_1790294916643.jsonl) && echo 'IDENTICAL except ts'; exit $RC
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+committed : traces/i2i_O1_ERC1056_1780620182135.jsonl entries 22
+reproduced: traces/i2i_O1_ERC1056_1790294916643.jsonl entries 22
+
+## Per-transaction comparison (kind=tx)
+seq | fn | fnId | identity | committed gas | reproduced gas | delta | events c/r | txHash equal
+2 | createDID | F1 | Registry | 178935 | 178935 | 0 | 1/1 | true
+3 | createDID | F1 | IdentityA | 161835 | 161835 | 0 | 1/1 | true
+4 | createDID | F1 | IdentityB | 161823 | 161823 | 0 | 1/1 | true
+5 | issueCredential | F5 | Registry | 130163 | 130163 | 0 | 1/1 | true
+6 | issueCredential | F5 | Registry | 130163 | 130163 | 0 | 1/1 | true
+7 | addVerificationMethod | F9 | IdentityA | 59607 | 59607 | 0 | 1/1 | true
+8 | addVerificationMethod | F9 | IdentityA | 59607 | 59607 | 0 | 1/1 | true
+9 | addDelegate | F11 | IdentityA | 54227 | 54227 | 0 | 1/1 | true
+15 | createPresentation | F8 | IdentityA | 62441 | 62441 | 0 | 1/1 | false
+17 | revokeCredential | F7 | Registry | 32980 | 32980 | 0 | 1/1 | true
+19 | removeVerificationMethod | F10 | IdentityA | 36478 | 36478 | 0 | 1/1 | true
+20 | updateDID | F3 | IdentityB | 44760 | 44760 | 0 | 2/2 | true
+21 | deactivateDID | F4 | IdentityA | 55127 | 55127 | 0 | 1/1 | true
+
+## Per-function aggregate (all 12 fnIds, tx gas where applicable)
+fnId | fn | kind | calls c/r | committed gas | reproduced gas | delta
+F1 | createDID | tx | 3/3 | 178935,161835,161823 | 178935,161835,161823 | 0,0,0
+F2 | resolveDID | view | 2/2 | (view) | (view) | n/a
+F3 | updateDID | tx | 1/1 | 44760 | 44760 | 0
+F4 | deactivateDID | tx | 1/1 | 55127 | 55127 | 0
+F5 | issueCredential | tx | 2/2 | 130163,130163 | 130163,130163 | 0,0
+F6 | verifyCredential | view | 3/3 | (view) | (view) | n/a
+F7 | revokeCredential | tx | 1/1 | 32980 | 32980 | 0
+F8 | createPresentation | tx | 1/1 | 62441 | 62441 | 0
+F9 | addVerificationMethod | tx | 2/2 | 59607,59607 | 59607,59607 | 0,0
+F10 | removeVerificationMethod | tx | 1/1 | 36478 | 36478 | 0
+F11 | addDelegate | tx | 1/1 | 54227 | 54227 | 0
+F12 | validDelegate | view | 1/1 | (view) | (view) | n/a
+
+function coverage: committed 12/12, reproduced 12/12
+total tx gas: committed 1168146, reproduced 1168146, delta 0; tx count 13
+blocking mismatches (excluding ts/txHash): 0
+
+## Schema conformance vs traces/SCHEMA.md (reproduced trace)
+entries violating documented field types/presence rules: 0/22
+  UNDOCUMENTED field "phase" present on entries 1:deploy, 16:offchain, 22:summary (also present in committed trace: true)
+kinds seen: {"deploy":1,"tx":13,"view":6,"offchain":1,"summary":1}
+--- sha256 of traces ---
+36811c6c6b8f0d89f18346a1ee81783b999b8ef02461f6931492eb933973577a *traces/i2i_O1_ERC1056_1780620182135.jsonl
+6b40f36c79c7f1e26286c19031f8a33e8b86c099bda590ab9432aa6473f96d85 *traces/i2i_O1_ERC1056_1790294916643.jsonl
+--- byte diff (committed vs reproduced), ts fields masked ---
+15c15
+< {"seq":15,"impl":"O1_ERC1056","ts":X,"kind":"tx","fn":"createPresentation","fnId":"F8","identity":"IdentityA","txHash":"0xcca4116e9aa2de0653d6088994ec09e3da353f6ab62f2c5593892491a7eddd72","gasUsed":"62441","events":1,"note":"gas=62441"}
+---
+> {"seq":15,"impl":"O1_ERC1056","ts":X,"kind":"tx","fn":"createPresentation","fnId":"F8","identity":"IdentityA","txHash":"0x9ef005d1b6a693d025235ab0db93a812e49e33d7ed4d308718fad5daae68271e","gasUsed":"62441","events":1,"note":"gas=62441"}
+exit: 0

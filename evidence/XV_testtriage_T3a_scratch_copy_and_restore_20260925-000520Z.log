@@ -1,0 +1,102 @@
+=== XV test-triage :: step=T3a_scratch_copy_and_restore ===
+LABEL    : PREVIEW - does not resolve [TS-1]; sanctioned run requires operator D2 (scratch only, NON-GRADUATING)
+UTC time : 2026-09-25T00:05:20Z
+command  : rm -rf restore && mkdir -p restore/implementations && (cd "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-III-FullERC725StandardCodeBaseAndImplementation/ERC725-develop/implementations" && tar --exclude=./node_modules -cf - .) | tar -xf - -C restore/implementations && echo '--- copied (sans node_modules):' && ls -la restore/implementations && echo '--- upstream HEAD (not changed):' && git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/upstream/ERC725" rev-parse HEAD && echo '--- git archive restore:' && git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/upstream/ERC725" archive 3b1b4935db8c8576647bd064bf9c9c2f8724721e implementations/contracts/custom implementations/contracts/interfaces implementations/contracts/helpers | tar -xvf - -C restore && echo '--- sha256 of restored files:' && (cd restore && find implementations/contracts/custom implementations/contracts/interfaces implementations/contracts/helpers -type f | sort | xargs sha256sum) && echo '--- byte-check: as-found 13 contracts vs upstream 3b1b4935:' && mkdir -p upstream_check && git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/upstream/ERC725" archive 3b1b4935db8c8576647bd064bf9c9c2f8724721e implementations/contracts | tar -xf - -C upstream_check && for f in restore/implementations/contracts/*.sol; do b=$(basename $f); cmp -s $f upstream_check/implementations/contracts/$b && echo "MATCH $b" || echo "DIFF  $b"; done && echo '--- TEST status (must be clean):' && git -C "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST" status --short && echo '(end status)'
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+--- copied (sans node_modules):
+total 1021
+drwxr-xr-x 1 nikhilp 197121      0 Jul  5 14:23 .
+drwxr-xr-x 1 nikhilp 197121      0 Sep 24 17:05 ..
+-rw-r--r-- 1 nikhilp 197121    142 Jun 20 19:30 .editorconfig
+-rw-r--r-- 1 nikhilp 197121    333 Jun 20 19:30 .eslintrc.json
+-rw-r--r-- 1 nikhilp 197121    256 Jun 20 19:30 .gitignore
+-rw-r--r-- 1 nikhilp 197121     39 Jun 20 19:30 .prettierignore
+-rw-r--r-- 1 nikhilp 197121    414 Jun 20 19:30 .prettierrc
+-rw-r--r-- 1 nikhilp 197121     51 Jun 20 19:30 .solcover.js
+-rw-r--r-- 1 nikhilp 197121    329 Jun 20 19:30 .solhint.json
+-rw-r--r-- 1 nikhilp 197121     16 Jun 20 19:30 .tool-versions
+-rw-r--r-- 1 nikhilp 197121  13087 Jun 20 19:30 CHANGELOG.md
+-rw-r--r-- 1 nikhilp 197121  11558 Jun 20 19:30 LICENSE
+-rw-r--r-- 1 nikhilp 197121   3237 Jun 20 19:30 README.md
+-rw-r--r-- 1 nikhilp 197121   2088 Jun 20 19:30 RELEASE.md
+-rw-r--r-- 1 nikhilp 197121   2263 Jun 20 19:30 analyse.sh
+-rw-r--r-- 1 nikhilp 197121   3431 Jun 20 19:30 constants.js
+drwxr-xr-x 1 nikhilp 197121      0 Jun 20 19:30 contracts
+-rw-r--r-- 1 nikhilp 197121    905 Jun 20 19:30 hardhat.config.ts
+-rw-r--r-- 1 nikhilp 197121 950919 Jun 20 19:30 package-lock.json
+-rw-r--r-- 1 nikhilp 197121   1795 Jun 20 19:30 package.json
+-rw-r--r-- 1 nikhilp 197121    134 Jun 20 19:30 slither.config.json
+drwxr-xr-x 1 nikhilp 197121      0 Jun 20 19:30 test
+-rw-r--r-- 1 nikhilp 197121    321 Jun 20 19:30 tsconfig.json
+--- upstream HEAD (not changed):
+3b1b4935db8c8576647bd064bf9c9c2f8724721e
+--- git archive restore:
+implementations/
+implementations/contracts/
+implementations/contracts/custom/
+implementations/contracts/custom/OwnableUnset.sol
+implementations/contracts/helpers/
+implementations/contracts/helpers/ConstantsChecker.sol
+implementations/contracts/helpers/Contract.sol
+implementations/contracts/helpers/Counter.sol
+implementations/contracts/helpers/CustomRevertTest.sol
+implementations/contracts/helpers/DelegateTest.sol
+implementations/contracts/helpers/ERC725XPayableTester.sol
+implementations/contracts/helpers/ERC725YReader.sol
+implementations/contracts/helpers/ERC725YWriter.sol
+implementations/contracts/helpers/NoReceive.sol
+implementations/contracts/helpers/NonPayableFallbackContract.sol
+implementations/contracts/helpers/PayableFallbackContract.sol
+implementations/contracts/helpers/Reader.sol
+implementations/contracts/helpers/ReceiveTester.sol
+implementations/contracts/helpers/Return.sol
+implementations/contracts/helpers/WithConstructorPayable.sol
+implementations/contracts/helpers/WithConstructorWithArgs.sol
+implementations/contracts/helpers/WithConstructorWithoutArgs.sol
+implementations/contracts/helpers/WithoutConstructor.sol
+implementations/contracts/helpers/selfdestruct.sol
+implementations/contracts/interfaces/
+implementations/contracts/interfaces/IERC725X.sol
+implementations/contracts/interfaces/IERC725Y.sol
+--- sha256 of restored files:
+50e07a79ff651dab32750d69ca0dea643552e9cd8ca760ee37ff5145a1279a17 *implementations/contracts/custom/OwnableUnset.sol
+dcbe922ca5d702a5e2d8df336800a5dc5da0d4eff0b86fb646b394ba13c1ced9 *implementations/contracts/helpers/ConstantsChecker.sol
+3b411ab9e2bc8ed513c8738d771938a37f6b2db960b07755e864433c98c19177 *implementations/contracts/helpers/Contract.sol
+c75ec92e4badd6c9ffea0e0359c6f54760ee28fb5f48c24a5bc3b6e5a33d451f *implementations/contracts/helpers/Counter.sol
+f059acfaf4dc2c974a2d749ee4c1ed636a0e48ca052f472704305ccb1eeb37ca *implementations/contracts/helpers/CustomRevertTest.sol
+54607de481fe0e3caaf19c7d45f1edf79af1bd208f9e96059cdf427112541c45 *implementations/contracts/helpers/DelegateTest.sol
+cd7ba00757feb206a47fe0a4a53eced64b3295c95024c59fbad1e689eacd2cf6 *implementations/contracts/helpers/ERC725XPayableTester.sol
+b743ce549de0099271c4ecf476cbbb1acd0bda59c901c9b0c689d4890b2ca59e *implementations/contracts/helpers/ERC725YReader.sol
+cd170adbbb3f8ad631ebe4914679edc883d4c23ef6fa1e6b898ad1dd28fff208 *implementations/contracts/helpers/ERC725YWriter.sol
+55a56fd323b0f8c8e9b9ab84cbf480043285326b082fb297f032526bc4eee531 *implementations/contracts/helpers/NoReceive.sol
+57dfd1d5b966ebd738b308dd96f64acbdb69c727bc551a8088ce1cd60437e73b *implementations/contracts/helpers/NonPayableFallbackContract.sol
+2d9ee85eeb65468ea6e461f159d6f4f353ec73671fae0666c10b64e704e18237 *implementations/contracts/helpers/PayableFallbackContract.sol
+c09916166093e453360484d3f43fa7133af097a9f2d03bef6ce04128d707ad3f *implementations/contracts/helpers/Reader.sol
+26cd31e2a6516a15852563f2f397fd4dcc795fa17ef0df3d8945175b2c245d77 *implementations/contracts/helpers/ReceiveTester.sol
+f1ac389d61be357baf0c27be0401d71073c88a0be1a2632f82918c884a11778e *implementations/contracts/helpers/Return.sol
+25f37111710d4e93463fe575b12425272272898d5cdf52d524f36a5591626b64 *implementations/contracts/helpers/WithConstructorPayable.sol
+c7bc1e51e742ff13dbc15ee4dbf69f9b062e7f057c6bf613582c33f8d23f8501 *implementations/contracts/helpers/WithConstructorWithArgs.sol
+33165d8ea5782699026932be6a8b7e99b10c84b1de56ba9238ae2706e59ea672 *implementations/contracts/helpers/WithConstructorWithoutArgs.sol
+8576219d533826ba408f3f9ca46ea0bc59f48657a0f94732b01e3c09d2e008a2 *implementations/contracts/helpers/WithoutConstructor.sol
+2bc2c9ec43e2c831ef38f963c0832ff0922d4e7e688b0ddec52878d682e2114e *implementations/contracts/helpers/selfdestruct.sol
+5a5a88b39c27c9c12ff805bd3bf7c94824659cbd40ca367b46b93cd16560d935 *implementations/contracts/interfaces/IERC725X.sol
+f4e3981b112750f55b149039735f3810c4417ced8181e0f4f5556c60735238e9 *implementations/contracts/interfaces/IERC725Y.sol
+--- byte-check: as-found 13 contracts vs upstream 3b1b4935:
+MATCH ERC725.sol
+MATCH ERC725Init.sol
+MATCH ERC725InitAbstract.sol
+MATCH ERC725X.sol
+MATCH ERC725XCore.sol
+MATCH ERC725XInit.sol
+MATCH ERC725XInitAbstract.sol
+MATCH ERC725Y.sol
+MATCH ERC725YCore.sol
+MATCH ERC725YInit.sol
+MATCH ERC725YInitAbstract.sol
+MATCH constants.sol
+MATCH errors.sol
+--- TEST status (must be clean):
+(end status)
+exit: 0

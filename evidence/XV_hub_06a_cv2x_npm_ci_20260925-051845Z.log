@@ -1,0 +1,59 @@
+=== XV hub cvin-sc :: step=06a_cv2x_npm_ci ===
+UTC time : 2026-09-25T05:18:45Z
+command  : npm ci --ignore-scripts --no-audit --no-fund
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc/implementation/cv2x-testbed
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-darwin-arm64@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-darwin-x64@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-linux-arm64-gnu@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-linux-arm64-musl@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-linux-x64-gnu@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-linux-x64-musl@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@nomicfoundation/edr-win32-x64-msvc@0.12.0-next.14',
+npm warn EBADENGINE   required: { node: '>= 20' },
+npm warn EBADENGINE   current: { node: 'v18.20.4', npm: '10.7.0' }
+npm warn EBADENGINE }
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@5.0.15: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.1.7: Glob versions prior to v9 are no longer supported
+
+added 578 packages in 42s
+=== exit code: 0 ===

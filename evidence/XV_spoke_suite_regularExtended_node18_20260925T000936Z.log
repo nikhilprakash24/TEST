@@ -1,0 +1,26 @@
+=== XV spoke evidence log ===
+UTC:      2026-09-25T00:09:37Z
+step:     suite_regularExtended_node18
+command:  npx hardhat test test/ERC721/regularExtended.js
+cwd:      /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/spoke-ssi-did/1_blockchain-identity
+node -v:  v18.20.4  (/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node)
+npm -v:   10.7.0
+git HEAD: 084edfdcb7a1c74d04029b7698e341e003f7217c (claude/clone-cvin-id-scs-011CUyxScetMdSQFkuQUNLTt)
+==============================
+[33m[1mWARNING:[22m[39m You are currently using Node.js v18.20.4, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+
+
+  ERC721 Regular Test Suite with Extended Scenarios
+    ✔ Should mint a token
+    ✔ Should verify identity and eligibility for warranty
+    ✔ Should record the timestamp of toll entry (108ms)
+    ✔ Should allow payment of toll in native coin (62ms)
+
+
+  4 passing (3s)
+
+==============================
+EXIT CODE: 0
+END UTC:   2026-09-25T00:09:55Z

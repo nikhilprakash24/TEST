@@ -1,0 +1,45 @@
+=== XV canon-v1.3 repro :: step=01a_prelock ===
+UTC time : 2026-09-24T23:37:30Z
+command  : echo "package-lock.json present in RUN dir: $( [ -f package-lock.json ] && echo YES || echo NO )"; echo "node_modules present: $( [ -d node_modules ] && echo YES || echo NO )"; ls -la; echo; echo "--- package.json ---"; cat package.json
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+package-lock.json present in RUN dir: NO
+node_modules present: NO
+total 32
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 .
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 ..
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 BUILD_DIRECTIONS
+-rw-r--r-- 1 nikhilp 197121 4180 Sep 24 16:37 CLAUDE.md
+-rw-r--r-- 1 nikhilp 197121  619 Sep 24 16:37 README.md
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 benchmarks
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 contracts
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 docs
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 explorer
+-rw-r--r-- 1 nikhilp 197121  833 Sep 24 16:37 hardhat.config.js
+-rw-r--r-- 1 nikhilp 197121  349 Sep 24 16:37 package.json
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 scenarios
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 test
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 16:37 traces
+
+--- package.json ---
+{
+  "name": "cvin-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.28.6",
+    "solc": "^0.8.24"
+  }
+}
+exit: 0

@@ -1,0 +1,18 @@
+=== XV test-triage :: step=T2b_build0_CVIN_ERC725_0824 ===
+LABEL    : AS-FOUND / read-only triage
+UTC time : 2026-09-24T23:39:25Z
+command  : "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/test-triage/perfile.sh" "/c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe" - '' CVIN_ERC725.sol
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/TEST/CVIN-Implementation-I-ERC725-735/Build-0-BaseImplementation-CVINModified/SmartContracts
+compiler : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/solc/solc-windows-amd64-v0.8.24+commit.e11b9ed9.exe
+--version: Version: 0.8.24+commit.e11b9ed9.Windows.msvc
+TEST HEAD: 96bb26929be3913bac0bad55ffe10eac339bc4e9 (branch sandbox-onboarding)
+=== output ===
+################ FILE: CVIN_ERC725.sol
+Error: Source file requires different compiler version (current compiler is 0.8.24+commit.e11b9ed9.Windows.msvc) - note that nightly builds are considered to be strictly less than the released version
+ --> CVIN_ERC725.sol:1:1:
+  |
+1 | pragma solidity 0.4.24;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+################ RESULT: CVIN_ERC725.sol rc=1
+exit: 0

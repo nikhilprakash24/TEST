@@ -1,0 +1,23 @@
+=== XV hub cvin-sc :: step=05_compare_results ===
+UTC time : 2026-09-25T05:18:32Z
+command  : echo '### gas_benchmark.json committed vs rerun'; node _cmp.js /c/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0/implementation/4_comparison-framework/results/gas_benchmark.json implementation/4_comparison-framework/results/gas_benchmark.json; echo '### attack_results.json committed vs rerun'; node _cmp.js /c/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0/implementation/4_comparison-framework/security-analysis/results/attack_results.json implementation/4_comparison-framework/security-analysis/results/attack_results.json; echo '### vs 2026-09-16 rerun gas'; node _cmp.js verification/2026-09-16_lineageB_rerun/gas_benchmark_rerun.json implementation/4_comparison-framework/results/gas_benchmark.json
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/hub-cvin-sc
+node -v  : v18.20.4
+npm -v   : 10.7.0
+node path: /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/node-v18.20.4-win-x64/node
+source   : C:/Users/nikhilp/Desktop/CVIN-2026-repoPrep/cvin-sc-0 (copied to runs/hub-cvin-sc)
+=== output ===
+### gas_benchmark.json committed vs rerun
+gasUsed leaves: 55 numeric: 52 identical: 55
+ALL differing leaves:
+   .metadata.date | "2026-07-13T00:32:43.436Z" -> "2026-09-25T05:18:18.325Z"
+### attack_results.json committed vs rerun
+gasUsed leaves: 0 numeric: 0 identical: 0
+outcome leaves: 54 committed {"N/A":11,"DEFENDED":43} rerun {"N/A":11,"DEFENDED":43} identical: 54
+ALL differing leaves:
+   .metadata.date | "2026-07-14T02:47:33.415Z" -> "2026-09-25T05:18:01.106Z"
+### vs 2026-09-16 rerun gas
+gasUsed leaves: 55 numeric: 52 identical: 55
+ALL differing leaves:
+   .metadata.date | "2026-09-16T10:23:06.553Z" -> "2026-09-25T05:18:18.325Z"
+=== exit code: 0 ===

@@ -1,0 +1,42 @@
+=== XV canon-v1.3 repro :: step=04_S1_scenario ===
+UTC time : 2026-09-25T00:08:12Z
+command  : ls traces/; IMPL=O1_ERC1056 npx hardhat run scenarios/run_i2i.js; RC=$?; echo "--- traces after ---"; ls -la traces/; exit $RC
+cwd      : /c/Users/nikhilp/Desktop/CVIN-2026-Sanbox1_v6/toolchain/runs/canon-v1.3-repro
+node -v  : v24.16.0
+npm -v   : 11.13.0
+node path: /c/Program Files/nodejs/node
+=== output ===
+SCHEMA.md
+i2i_O1_ERC1056_1780620182135.jsonl
+[1] deploy: O1_ERC1056 at 0x5FbDB2315678afecb367f032d93F642f64180aa3
+[2] createDID: gas=178935
+[3] createDID: gas=161835
+[4] createDID: gas=161823
+[5] issueCredential: gas=130163
+[6] issueCredential: gas=130163
+[7] addVerificationMethod: gas=59607
+[8] addVerificationMethod: gas=59607
+[9] addDelegate: gas=54227
+[10] resolveDID: doc 96 bytes
+[11] verifyCredential: valid=true
+[12] resolveDID: doc 96 bytes
+[13] verifyCredential: valid=true
+[14] validDelegate: OBU delegate=true
+[15] createPresentation: gas=62441
+[16] secure-channel: ECDH P-256 + AES-256-GCM, ct=42B, tag=16B (off-chain; VP challenge anchors payload)
+[17] revokeCredential: gas=32980
+[18] verifyCredential: post-revocation valid=false revoked=true -> channel torn down
+[19] removeVerificationMethod: gas=36478
+[20] updateDID: gas=44760
+[21] deactivateDID: gas=55127
+[22] done: functions covered: 12/12
+
+Trace written: traces/i2i_O1_ERC1056_1790294916643.jsonl (22 entries, 12/12 functions)
+--- traces after ---
+total 24
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 17:08 .
+drwxr-xr-x 1 nikhilp 197121    0 Sep 24 17:07 ..
+-rw-r--r-- 1 nikhilp 197121 1151 Sep 24 16:37 SCHEMA.md
+-rw-r--r-- 1 nikhilp 197121 4602 Sep 24 16:37 i2i_O1_ERC1056_1780620182135.jsonl
+-rw-r--r-- 1 nikhilp 197121 4602 Sep 24 17:08 i2i_O1_ERC1056_1790294916643.jsonl
+exit: 0
